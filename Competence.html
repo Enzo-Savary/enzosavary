@@ -3,58 +3,90 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Compétences d'Enzo Savary – Administration système, réseaux, virtualisation, sécurité et support technique acquis en BTS SIO." />
+    <meta name="author" content="Enzo Savary" />
     <title>Compétences – Enzo Savary</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg: #0a0a0f; --card: #13131a; --card2: #1a1a24; --border: rgba(255,255,255,0.07);
-            --accent: #6c63ff; --accent2: #ff6584; --text: #e8e8f0; --muted: #7a7a9a; --radius: 14px;
-            --font: 'Space Grotesk', sans-serif;
-        }
-        html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); font-family: var(--font); font-weight: 300; line-height: 1.7; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        :root { --bg:#0a0a0f; --card:#13131a; --card2:#1a1a24; --border:rgba(255,255,255,0.07); --accent:#6c63ff; --accent2:#ff6584; --text:#e8e8f0; --muted:#7a7a9a; --radius:14px; --font:'Space Grotesk',sans-serif; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text); font-family:var(--font); font-weight:300; line-height:1.7; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column; }
         body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:.5; }
- 
+
         nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5vw; background:rgba(10,10,15,0.75); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
         .nav-brand { font-family:var(--font); font-weight:700; font-size:1.1rem; letter-spacing:-.02em; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none; }
         .nav-links { display:flex; gap:2rem; list-style:none; }
         .nav-links a { color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .25s; }
         .nav-links a:hover { color:var(--text); }
         .nav-links a.active { color:var(--accent); }
- 
-        main { flex:1; padding: 8rem 5vw 5rem; position: relative; z-index:1; }
-        .page-inner { max-width: 900px; margin: 0 auto; }
- 
-        .page-header { margin-bottom: 3.5rem; }
+        .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.3rem; }
+        .burger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:transform .3s,opacity .3s; }
+        .burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity:0; }
+        .burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; background:rgba(10,10,15,0.97); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); z-index:99; padding:1.5rem 5vw; flex-direction:column; gap:1.2rem; }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a { color:var(--muted); text-decoration:none; font-size:1rem; font-weight:500; text-transform:uppercase; transition:color .25s; }
+        .mobile-menu a:hover, .mobile-menu a.active { color:var(--accent); }
+
+        main { flex:1; padding:8rem 5vw 5rem; position:relative; z-index:1; }
+        .page-inner { max-width:900px; margin:0 auto; }
+        .page-header { margin-bottom:3.5rem; }
         .page-label { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:.75rem; }
         .divider { width:50px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin-bottom:1.5rem; }
         .page-title { font-family:var(--font); font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; background:linear-gradient(135deg,#fff 40%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
         .page-subtitle { color:var(--muted); font-size:.98rem; margin-top:.75rem; max-width:520px; }
- 
-        /* COMPETENCE GRID */
-        .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.2rem; }
- 
-        .comp-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; transition: border-color .25s, transform .25s; }
-        .comp-card:hover { border-color: rgba(108,99,255,.4); transform: translateY(-3px); }
- 
-        .comp-num { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; color: #fff; flex-shrink: 0; }
- 
-        .comp-body h3 { font-family: var(--font); font-size: .95rem; font-weight: 600; letter-spacing: -.01em; margin-bottom: .4rem; }
-        .comp-body p { color: var(--muted); font-size: .85rem; font-weight: 400; line-height: 1.6; }
- 
+
+        .comp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.2rem; }
+        .comp-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.6rem; display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:start; transition:border-color .25s,transform .25s; }
+        .comp-card:hover { border-color:rgba(108,99,255,.4); transform:translateY(-3px); }
+        .comp-num { width:38px; height:38px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; color:#fff; flex-shrink:0; }
+        .comp-body h3 { font-family:var(--font); font-size:.95rem; font-weight:600; letter-spacing:-.01em; margin-bottom:.4rem; }
+        .comp-body p { color:var(--muted); font-size:.85rem; font-weight:400; line-height:1.6; margin-bottom:.7rem; }
+
+        /* Niveau badge */
+        .level { display:inline-flex; align-items:center; gap:.35rem; font-size:.73rem; font-weight:600; padding:.2rem .65rem; border-radius:100px; }
+        .level-debutant { background:rgba(99,153,34,.12); color:#639922; border:1px solid rgba(99,153,34,.25); }
+        .level-inter { background:rgba(239,159,39,.12); color:#EF9F27; border:1px solid rgba(239,159,39,.25); }
+        .level-avance { background:rgba(108,99,255,.12); color:var(--accent); border:1px solid rgba(108,99,255,.25); }
+        .level::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; }
+
         footer { border-top:1px solid var(--border); padding:2rem 5vw; position:relative; z-index:1; }
         .footer-bottom { max-width:900px; margin:0 auto; color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; }
- 
+
         .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
         .reveal.visible { opacity:1; transform:none; }
- 
-        @media (max-width:600px) {
-            .comp-grid { grid-template-columns: 1fr; }
+
+        /* TABS */
+        .tabs { display:flex; gap:.5rem; margin-bottom:2.5rem; background:var(--card); border:1px solid var(--border); border-radius:100px; padding:.35rem; width:fit-content; }
+        .tab-btn { background:none; border:none; color:var(--muted); font-family:var(--font); font-size:.85rem; font-weight:500; padding:.5rem 1.4rem; border-radius:100px; cursor:pointer; transition:background .2s,color .2s; letter-spacing:.04em; }
+        .tab-btn.active { background:var(--accent); color:#fff; }
+        .tab-btn:hover:not(.active) { color:var(--text); }
+        .tab-panel { display:none; }
+        .tab-panel.active { display:block; }
+
+        /* TABLEAU SECTION */
+        .tableau-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:2rem 2.5rem; }
+        .tableau-card h2 { font-family:var(--font); font-size:1.1rem; font-weight:600; margin-bottom:.5rem; }
+        .tableau-card p { color:var(--muted); font-size:.9rem; margin-bottom:1.8rem; }
+        .dl-btn { display:inline-flex; align-items:center; gap:.6rem; background:var(--accent); color:#fff; padding:.8rem 1.8rem; border-radius:100px; text-decoration:none; font-weight:500; font-size:.9rem; font-family:var(--font); transition:transform .2s,box-shadow .2s; box-shadow:0 0 25px rgba(108,99,255,.3); }
+        .dl-btn:hover { transform:translateY(-2px); box-shadow:0 8px 35px rgba(108,99,255,.45); }
+        .dl-btn i { font-size:1rem; }
+        .file-info { display:inline-flex; align-items:center; gap:.5rem; margin-left:1rem; color:var(--muted); font-size:.82rem; }
+        .file-info i { color:var(--accent2); }
+
+        @media (max-width:768px) {
+            .nav-links { display:none; }
+            .burger { display:flex; }
+            .comp-grid { grid-template-columns:1fr; }
             .footer-bottom { flex-direction:column; gap:.3rem; }
+            .tabs { width:100%; justify-content:center; }
+            .tableau-card { padding:1.5rem; }
+            .file-info { display:none; }
         }
     </style>
 </head>
@@ -62,27 +94,44 @@
     <nav>
         <a class="nav-brand" href="index.html">Enzo Savary</a>
         <ul class="nav-links">
+            <li><a href="index.html">Présentation</a></li>
             <li><a href="CV.html">CV</a></li>
             <li><a href="Competence.html" class="active">Compétences</a></li>
             <li><a href="entreprise.html">Entreprise</a></li>
         </ul>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
- 
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Présentation</a>
+        <a href="CV.html">CV</a>
+        <a href="Competence.html" class="active">Compétences</a>
+        <a href="entreprise.html">Entreprise</a>
+    </div>
+
     <main>
         <div class="page-inner">
             <div class="page-header reveal">
                 <p class="page-label">BTS SIO</p>
                 <div class="divider"></div>
                 <h1 class="page-title">Compétences</h1>
-                <p class="page-subtitle">Les compétences acquises au cours de ma formation en Services Informatiques aux Organisations.</p>
+                <p class="page-subtitle">Les compétences acquises au cours de ma formation en Services Informatiques aux Organisations et en alternance.</p>
             </div>
- 
+
+            <!-- Onglets -->
+            <div class="tabs reveal">
+                <button class="tab-btn active" onclick="switchTab('competences', this)">Compétences</button>
+                <button class="tab-btn" onclick="switchTab('tableau', this)">Tableau E4 – BTS SIO</button>
+            </div>
+
+            <!-- Onglet 1 : Compétences -->
+            <div class="tab-panel active" id="tab-competences">
             <div class="comp-grid">
                 <div class="comp-card reveal">
                     <div class="comp-num">01</div>
                     <div class="comp-body">
                         <h3>Administration Windows & Linux</h3>
                         <p>Gestion, configuration et maintenance des systèmes d'exploitation serveurs et clients.</p>
+                        <span class="level level-inter">Intermédiaire</span>
                     </div>
                 </div>
                 <div class="comp-card reveal">
@@ -90,13 +139,15 @@
                     <div class="comp-body">
                         <h3>Réseaux locaux</h3>
                         <p>Configuration, gestion et maintenance de réseaux assurant la communication et la disponibilité des services.</p>
+                        <span class="level level-inter">Intermédiaire</span>
                     </div>
                 </div>
                 <div class="comp-card reveal">
                     <div class="comp-num">03</div>
                     <div class="comp-body">
                         <h3>Services réseau</h3>
-                        <p>Installation et gestion des services essentiels au fonctionnement d'un réseau d'entreprise.</p>
+                        <p>Installation et gestion des services essentiels au fonctionnement d'un réseau d'entreprise (DNS, DHCP, AD).</p>
+                        <span class="level level-debutant">Débutant</span>
                     </div>
                 </div>
                 <div class="comp-card reveal">
@@ -104,6 +155,7 @@
                     <div class="comp-body">
                         <h3>Virtualisation</h3>
                         <p>Création et administration de machines virtuelles pour optimiser les ressources informatiques.</p>
+                        <span class="level level-debutant">Débutant</span>
                     </div>
                 </div>
                 <div class="comp-card reveal">
@@ -111,34 +163,74 @@
                     <div class="comp-body">
                         <h3>Sécurisation des infrastructures</h3>
                         <p>Protection des systèmes et des données contre les menaces et les accès non autorisés.</p>
+                        <span class="level level-debutant">Débutant</span>
                     </div>
                 </div>
                 <div class="comp-card reveal">
                     <div class="comp-num">06</div>
                     <div class="comp-body">
                         <h3>Support technique</h3>
-                        <p>Assistance aux utilisateurs et résolution des incidents matériels et logiciels.</p>
+                        <p>Assistance aux utilisateurs et résolution des incidents matériels et logiciels sur site.</p>
+                        <span class="level level-avance">Avancé</span>
+                    </div>
+                </div>
+                <div class="comp-card reveal">
+                    <div class="comp-num">07</div>
+                    <div class="comp-body">
+                        <h3>Développement web</h3>
+                        <p>Création de pages web en HTML et CSS, intégration de frameworks Bootstrap.</p>
+                        <span class="level level-inter">Intermédiaire</span>
+                    </div>
+                </div>
+                <div class="comp-card reveal">
+                    <div class="comp-num">08</div>
+                    <div class="comp-body">
+                        <h3>Scripting Python</h3>
+                        <p>Automatisation de tâches et traitement de données via des scripts Python.</p>
+                        <span class="level level-debutant">Débutant</span>
                     </div>
                 </div>
             </div>
+            </div><!-- /tab-competences -->
+
+            <!-- Onglet 2 : Tableau E4 -->
+            <div class="tab-panel" id="tab-tableau">
+                <div class="tableau-card reveal">
+                    <h2>Tableau de synthèse des réalisations professionnelles</h2>
+                    <p>Document officiel BTS SIO – Épreuve E4 (Session 2025). Il recense l'ensemble de mes réalisations professionnelles en formation et en milieu professionnel, associées aux compétences du référentiel SISR.</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:1rem">
+                        <a class="dl-btn" href="Tableau_competences_BTS_SIO_Enzo_Savary.xlsx" download>
+                            <i class="bi bi-file-earmark-excel-fill"></i> Télécharger le tableau
+                        </a>
+                        <span class="file-info"><i class="bi bi-info-circle"></i> Fichier Excel .xlsx – BTS SIO SISR – Enzo Savary</span>
+                    </div>
+                </div>
+            </div><!-- /tab-tableau -->
+
         </div>
     </main>
- 
+
     <footer>
-        <div class="footer-bottom">
-            <span>© Enzo Savary 2025</span>
-            <span>BTS SIO – Marcq-en-Barœul</span>
-        </div>
+        <div class="footer-bottom"><span>© <span id="year"></span> Enzo Savary</span><span>BTS SIO – Marcq-en-Barœul</span></div>
     </footer>
- 
+
     <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('mobileMenu');
+        burger.addEventListener('click', () => { burger.classList.toggle('open'); menu.classList.toggle('open'); });
         const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 100); observer.unobserve(entry.target); }
-            });
-        }, { threshold: 0.08 });
-        reveals.forEach(el => observer.observe(el));
+        const obs = new IntersectionObserver((entries)=>{ entries.forEach((e)=>{ if(e.isIntersecting){e.target.classList.add('visible'); obs.unobserve(e.target);} }); },{threshold:.08});
+        reveals.forEach(el=>obs.observe(el));
+
+        function switchTab(id, btn) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            btn.classList.add('active');
+            // trigger reveals in newly shown tab
+            document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => el.classList.add('visible'));
+        }
     </script>
 </body>
 </html>
