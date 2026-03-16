@@ -1,76 +1,142 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content />
-        <meta name="author" content />
-        <title>Enzo Savary</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Custom Google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body class="d-flex flex-column">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Présentation</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="CV.html">CV</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Competence.html">compétence</a></li>
-                            <li class="nav-item"><a class="nav-link" href="entreprise.html">entreprise</a></li>
-                        </ul>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entreprise – Enzo Savary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0a0a0f; --card: #13131a; --card2: #1a1a24; --border: rgba(255,255,255,0.07);
+            --accent: #6c63ff; --accent2: #ff6584; --text: #e8e8f0; --muted: #7a7a9a; --radius: 14px;
+            --font: 'Space Grotesk', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font); font-weight: 300; line-height: 1.7; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:.5; }
+
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5vw; background:rgba(10,10,15,0.75); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
+        .nav-brand { font-family:var(--font); font-weight:700; font-size:1.1rem; letter-spacing:-.02em; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none; }
+        .nav-links { display:flex; gap:2rem; list-style:none; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .25s; }
+        .nav-links a:hover { color:var(--text); }
+        .nav-links a.active { color:var(--accent); }
+
+        main { flex:1; padding: 8rem 5vw 5rem; position: relative; z-index:1; }
+        .page-inner { max-width: 860px; margin: 0 auto; }
+
+        .page-header { margin-bottom: 3.5rem; }
+        .page-label { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:.75rem; }
+        .divider { width:50px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin-bottom:1.5rem; }
+        .page-title { font-family:var(--font); font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; background:linear-gradient(135deg,#fff 40%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+        /* COMPANY CARD */
+        .company-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 2rem; }
+
+        .company-logo-wrap { background: #fff; display: flex; align-items: center; justify-content: center; padding: 2.5rem; border-bottom: 1px solid var(--border); min-height: 180px; }
+        .company-logo-wrap img { max-height: 100px; max-width: 280px; object-fit: contain; }
+        .company-logo-placeholder { font-family: var(--font); font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+
+        .company-body { padding: 2rem 2.5rem; }
+        .company-name { font-family: var(--font); font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .3rem; }
+        .company-since { font-size: .8rem; color: var(--accent); font-weight: 500; background: rgba(108,99,255,.12); border: 1px solid rgba(108,99,255,.2); padding: .2rem .7rem; border-radius: 100px; display: inline-block; margin-bottom: 1.2rem; }
+        .company-desc { color: var(--muted); font-size: .95rem; font-weight: 400; margin-bottom: 1.5rem; }
+
+        /* Info chips */
+        .info-chips { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2rem; }
+        .chip { display: flex; align-items: center; gap: .45rem; background: var(--card2); border: 1px solid var(--border); border-radius: 100px; padding: .35rem .9rem; font-size: .82rem; color: var(--text); font-weight: 400; }
+        .chip i { color: var(--accent); }
+
+        /* Services grid */
+        .services-title { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: .8rem; }
+        .service-item { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; display: flex; align-items: center; gap: .6rem; font-size: .85rem; font-weight: 400; transition: border-color .2s; }
+        .service-item:hover { border-color: rgba(108,99,255,.35); }
+        .service-item i { color: var(--accent2); font-size: 1rem; flex-shrink: 0; }
+
+        footer { border-top:1px solid var(--border); padding:2rem 5vw; position:relative; z-index:1; }
+        .footer-bottom { max-width:860px; margin:0 auto; color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; }
+
+        .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+        .reveal.visible { opacity:1; transform:none; }
+
+        @media (max-width:600px) {
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .footer-bottom { flex-direction:column; gap:.3rem; }
+            .company-body { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-brand" href="index.html">Enzo Savary</a>
+        <ul class="nav-links">
+            <li><a href="CV.html">CV</a></li>
+            <li><a href="Competence.html">Compétences</a></li>
+            <li><a href="entreprise.html" class="active">Entreprise</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="page-inner">
+            <div class="page-header reveal">
+                <p class="page-label">Alternance</p>
+                <div class="divider"></div>
+                <h1 class="page-title">Mon entreprise</h1>
+            </div>
+
+            <div class="company-card reveal">
+                <div class="company-logo-wrap">
+                    <img src="cms.jpg" alt="Logo Caiss'Mag Systèmes" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                    <div class="company-logo-placeholder" style="display:none">CMS</div>
+                </div>
+                <div class="company-body">
+                    <div class="company-name">Caiss'Mag Systèmes</div>
+                    <span class="company-since">Fondée en 1992</span>
+                    <p class="company-desc">Une société spécialisée depuis 1992 dans les solutions d'encaissement et de gestion pour commerces et points de vente. Elle fournit et installe des caisses enregistreuses, des terminaux tactiles, des balances professionnelles, des automates de paiement, ainsi que les logiciels associés pour différents types de commerces.</p>
+                    <p class="company-desc">L'entreprise propose aussi conseil, installation, formation et service après-vente, avec des contrats de maintenance et d'assistance.</p>
+
+                    <div class="info-chips">
+                        <span class="chip"><i class="bi bi-geo-alt-fill"></i> Faches-Thumesnil, 59</span>
+                        <span class="chip"><i class="bi bi-calendar3"></i> Depuis 1992</span>
+                        <span class="chip"><i class="bi bi-shop"></i> Commerce & Retail</span>
+                    </div>
+
+                    <div class="services-title">Domaines d'activité</div>
+                    <div class="services-grid">
+                        <div class="service-item"><i class="bi bi-display"></i> Caisses enregistreuses</div>
+                        <div class="service-item"><i class="bi bi-phone"></i> Terminaux tactiles</div>
+                        <div class="service-item"><i class="bi bi-speedometer2"></i> Balances professionnelles</div>
+                        <div class="service-item"><i class="bi bi-credit-card-2-front"></i> Automates de paiement</div>
+                        <div class="service-item"><i class="bi bi-code-square"></i> Logiciels de gestion</div>
+                        <div class="service-item"><i class="bi bi-tools"></i> SAV & Maintenance</div>
+                        <div class="service-item"><i class="bi bi-person-workspace"></i> Formation</div>
+                        <div class="service-item"><i class="bi bi-headset"></i> Assistance</div>
                     </div>
                 </div>
-            </nav>
-            
-            <div class="container px-5 mb-5">
-            <div class="text-center mb-5">
-                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Caiss'Mag Systèmes</span></h1>
             </div>
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-11 col-xl-9 col-xxl-8"></div>
-            </div>
-            </div>
+        </div>
+    </main>
 
-            
-            <div class="card shadow border-0 rounded-4 mb-5">
-                                <div class="card-body p-5">
-                                    <div class="row align-items-center gx-5">
-                                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                            <div class="bg-light p-4 rounded-4">
-                                                <div class="text-center mb-5"><img src="cms.jpg" alt="Logo Caiss'Mag Systèmes"></div>
-                                            
-                                                    <p>Une société spécialisée depuis 1992 dans les solutions d’encaissement et de gestion pour commerces et points de vente. Elle fournit et installe des caisses enregistreuses, des terminaux tactiles, des balances professionnelles, des automates de paiement, ainsi que les logiciels associés pour différents types de commerces (restauration, boulangeries, prêt-à-porter, etc.).</p> 
-                                                    <p>L’entreprise propose aussi conseil, installation, formation et service après-vente, avec éventuellement des contrats de maintenance et d’assistance.</p> 
+    <footer>
+        <div class="footer-bottom">
+            <span>© Enzo Savary 2025</span>
+            <span>BTS SIO – Marcq-en-Barœul</span>
+        </div>
+    </footer>
 
-                                            </div>
-                                        </div>    
-                                    </div>        
-                                </div>    
-                </div>
-        <!-- Footer-->
-        <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0">&copy; Mon Site Web 2025</div></div>
-                </div>
-            </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 100); observer.unobserve(entry.target); }
+            });
+        }, { threshold: 0.08 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
 </html>
