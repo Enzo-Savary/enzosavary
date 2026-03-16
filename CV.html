@@ -16,7 +16,7 @@
         html { scroll-behavior:smooth; }
         body { background:var(--bg); color:var(--text); font-family:var(--font); font-weight:300; line-height:1.7; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column; }
         body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:.5; }
-
+ 
         nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5vw; background:rgba(10,10,15,0.75); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
         .nav-brand { font-family:var(--font); font-weight:700; font-size:1.1rem; letter-spacing:-.02em; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none; }
         .nav-links { display:flex; gap:2rem; list-style:none; }
@@ -32,18 +32,18 @@
         .mobile-menu.open { display:flex; }
         .mobile-menu a { color:var(--muted); text-decoration:none; font-size:1rem; font-weight:500; text-transform:uppercase; transition:color .25s; }
         .mobile-menu a:hover, .mobile-menu a.active { color:var(--accent); }
-
+ 
         main { flex:1; padding:8rem 5vw 5rem; position:relative; z-index:1; }
         .page-inner { max-width:860px; margin:0 auto; }
         .page-header { margin-bottom:3.5rem; }
         .page-label { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:.75rem; }
         .divider { width:50px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin-bottom:1.5rem; }
         .page-title { font-family:var(--font); font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; background:linear-gradient(135deg,#fff 40%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-
+ 
         .section-heading { display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem; margin-top:2.5rem; }
         .section-heading .icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:.95rem; flex-shrink:0; }
         .section-heading h2 { font-family:var(--font); font-size:1.1rem; font-weight:600; letter-spacing:-.01em; }
-
+ 
         .timeline { position:relative; padding-left:1.5rem; border-left:2px solid var(--border); margin-bottom:3rem; }
         .timeline-item { position:relative; margin-bottom:1.5rem; }
         .timeline-item::before { content:''; position:absolute; left:-1.85rem; top:.35rem; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); }
@@ -55,7 +55,7 @@
         .tl-city { font-size:.8rem; color:var(--muted); }
         .tl-spec { font-size:.8rem; color:var(--accent2); font-weight:500; margin-top:.3rem; }
         .tl-desc { color:var(--muted); font-size:.9rem; font-weight:400; }
-
+ 
         .skills-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:2rem; margin-bottom:1.5rem; }
         .skills-group { margin-bottom:2rem; }
         .skills-group:last-child { margin-bottom:0; }
@@ -63,13 +63,13 @@
         .skill-tags { display:flex; flex-wrap:wrap; gap:.6rem; }
         .skill-tag { background:var(--card2); border:1px solid var(--border); color:var(--text); font-size:.85rem; font-weight:500; padding:.35rem .9rem; border-radius:100px; transition:border-color .2s,background .2s; }
         .skill-tag:hover { border-color:var(--accent); background:rgba(108,99,255,.1); }
-
+ 
         footer { border-top:1px solid var(--border); padding:2rem 5vw; position:relative; z-index:1; }
         .footer-bottom { max-width:860px; margin:0 auto; color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; }
-
+ 
         .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
         .reveal.visible { opacity:1; transform:none; }
-
+ 
         @media (max-width:768px) {
             .nav-links { display:none; }
             .burger { display:flex; }
@@ -95,7 +95,7 @@
         <a href="Competence.html">Compétences</a>
         <a href="entreprise.html">Entreprise</a>
     </div>
-
+ 
     <main>
         <div class="page-inner">
             <div class="page-header reveal">
@@ -103,7 +103,7 @@
                 <div class="divider"></div>
                 <h1 class="page-title">Curriculum Vitæ</h1>
             </div>
-
+ 
             <div class="section-heading reveal">
                 <div class="icon"><i class="bi bi-mortarboard-fill" style="color:#fff"></i></div>
                 <h2>Formation</h2>
@@ -134,7 +134,7 @@
                     </div>
                 </div>
             </div>
-
+ 
             <div class="section-heading reveal">
                 <div class="icon"><i class="bi bi-briefcase-fill" style="color:#fff"></i></div>
                 <h2>Expérience professionnelle</h2>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div>
-
+ 
             <div class="section-heading reveal">
                 <div class="icon"><i class="bi bi-lightning-charge-fill" style="color:#fff"></i></div>
                 <h2>Compétences</h2>
@@ -184,11 +184,11 @@
             </div>
         </div>
     </main>
-
+ 
     <footer>
         <div class="footer-bottom"><span>© <span id="year"></span> Enzo Savary</span><span>BTS SIO – Marcq-en-Barœul</span></div>
     </footer>
-
+ 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         const burger = document.getElementById('burger');
