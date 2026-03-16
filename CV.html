@@ -3,40 +3,43 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="CV d'Enzo Savary – BTS SIO en alternance, parcours scolaire et compétences en informatique." />
+    <meta name="author" content="Enzo Savary" />
     <title>CV – Enzo Savary</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg: #0a0a0f; --card: #13131a; --card2: #1a1a24; --border: rgba(255,255,255,0.07);
-            --accent: #6c63ff; --accent2: #ff6584; --text: #e8e8f0; --muted: #7a7a9a; --radius: 14px;
-            --font: 'Space Grotesk', sans-serif;
-        }
-        html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); font-family: var(--font); font-weight: 300; line-height: 1.7; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        :root { --bg:#0a0a0f; --card:#13131a; --card2:#1a1a24; --border:rgba(255,255,255,0.07); --accent:#6c63ff; --accent2:#ff6584; --text:#e8e8f0; --muted:#7a7a9a; --radius:14px; --font:'Space Grotesk',sans-serif; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text); font-family:var(--font); font-weight:300; line-height:1.7; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column; }
         body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:.5; }
 
-        /* NAV */
         nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5vw; background:rgba(10,10,15,0.75); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
         .nav-brand { font-family:var(--font); font-weight:700; font-size:1.1rem; letter-spacing:-.02em; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none; }
         .nav-links { display:flex; gap:2rem; list-style:none; }
         .nav-links a { color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .25s; }
-        .nav-links a:hover, .nav-links a.active { color:var(--text); }
+        .nav-links a:hover { color:var(--text); }
         .nav-links a.active { color:var(--accent); }
+        .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.3rem; }
+        .burger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:transform .3s,opacity .3s; }
+        .burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity:0; }
+        .burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; background:rgba(10,10,15,0.97); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); z-index:99; padding:1.5rem 5vw; flex-direction:column; gap:1.2rem; }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a { color:var(--muted); text-decoration:none; font-size:1rem; font-weight:500; text-transform:uppercase; transition:color .25s; }
+        .mobile-menu a:hover, .mobile-menu a.active { color:var(--accent); }
 
-        /* CONTENT */
-        main { flex:1; padding: 8rem 5vw 5rem; position: relative; z-index:1; }
-        .page-inner { max-width: 860px; margin: 0 auto; }
-
-        .page-header { margin-bottom: 3.5rem; }
+        main { flex:1; padding:8rem 5vw 5rem; position:relative; z-index:1; }
+        .page-inner { max-width:860px; margin:0 auto; }
+        .page-header { margin-bottom:3.5rem; }
         .page-label { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:.75rem; }
         .divider { width:50px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin-bottom:1.5rem; }
         .page-title { font-family:var(--font); font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; background:linear-gradient(135deg,#fff 40%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-        /* TIMELINE */
         .section-heading { display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem; margin-top:2.5rem; }
         .section-heading .icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:.95rem; flex-shrink:0; }
         .section-heading h2 { font-family:var(--font); font-size:1.1rem; font-weight:600; letter-spacing:-.01em; }
@@ -44,7 +47,6 @@
         .timeline { position:relative; padding-left:1.5rem; border-left:2px solid var(--border); margin-bottom:3rem; }
         .timeline-item { position:relative; margin-bottom:1.5rem; }
         .timeline-item::before { content:''; position:absolute; left:-1.85rem; top:.35rem; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); }
-
         .tl-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem 1.6rem; display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:start; transition:border-color .25s; }
         .tl-card:hover { border-color:rgba(108,99,255,.35); }
         .tl-meta { min-width:140px; }
@@ -54,7 +56,6 @@
         .tl-spec { font-size:.8rem; color:var(--accent2); font-weight:500; margin-top:.3rem; }
         .tl-desc { color:var(--muted); font-size:.9rem; font-weight:400; }
 
-        /* SKILLS */
         .skills-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:2rem; margin-bottom:1.5rem; }
         .skills-group { margin-bottom:2rem; }
         .skills-group:last-child { margin-bottom:0; }
@@ -63,14 +64,15 @@
         .skill-tag { background:var(--card2); border:1px solid var(--border); color:var(--text); font-size:.85rem; font-weight:500; padding:.35rem .9rem; border-radius:100px; transition:border-color .2s,background .2s; }
         .skill-tag:hover { border-color:var(--accent); background:rgba(108,99,255,.1); }
 
-        /* FOOTER */
         footer { border-top:1px solid var(--border); padding:2rem 5vw; position:relative; z-index:1; }
         .footer-bottom { max-width:860px; margin:0 auto; color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; }
 
         .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
         .reveal.visible { opacity:1; transform:none; }
 
-        @media (max-width:600px) {
+        @media (max-width:768px) {
+            .nav-links { display:none; }
+            .burger { display:flex; }
             .tl-card { grid-template-columns:1fr; gap:.8rem; }
             .footer-bottom { flex-direction:column; gap:.3rem; }
         }
@@ -80,11 +82,19 @@
     <nav>
         <a class="nav-brand" href="index.html">Enzo Savary</a>
         <ul class="nav-links">
+            <li><a href="index.html">Présentation</a></li>
             <li><a href="CV.html" class="active">CV</a></li>
             <li><a href="Competence.html">Compétences</a></li>
             <li><a href="entreprise.html">Entreprise</a></li>
         </ul>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Présentation</a>
+        <a href="CV.html" class="active">CV</a>
+        <a href="Competence.html">Compétences</a>
+        <a href="entreprise.html">Entreprise</a>
+    </div>
 
     <main>
         <div class="page-inner">
@@ -94,7 +104,6 @@
                 <h1 class="page-title">Curriculum Vitæ</h1>
             </div>
 
-            <!-- Education -->
             <div class="section-heading reveal">
                 <div class="icon"><i class="bi bi-mortarboard-fill" style="color:#fff"></i></div>
                 <h2>Formation</h2>
@@ -102,51 +111,43 @@
             <div class="timeline">
                 <div class="timeline-item reveal">
                     <div class="tl-card">
-                        <div class="tl-meta">
-                            <span class="tl-year">2024 – 2026</span>
-                            <div class="tl-school">AFPI Alternance</div>
-                            <div class="tl-city">Marcq-en-Barœul</div>
-                            <div class="tl-spec">BTS SIO</div>
-                        </div>
-                        <p class="tl-desc">Suite à un échec pour un passage en 2ème année à l'IUT de Béthune, j'ai décidé de faire une reconversion et de partir en alternance à l'AFPI. L'entreprise dans laquelle je travaille est Caiss'Mag Systèmes à Faches-Thumesnils.</p>
+                        <div class="tl-meta"><span class="tl-year">2024 – 2026</span><div class="tl-school">AFPI Alternance</div><div class="tl-city">Marcq-en-Barœul</div><div class="tl-spec">BTS SIO</div></div>
+                        <p class="tl-desc">Suite à un échec pour un passage en 2ème année à l'IUT de Béthune, j'ai décidé de me réorienter et de partir en alternance à l'AFPI. Mon entreprise d'accueil est Caiss'Mag Systèmes à Faches-Thumesnil.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal">
                     <div class="tl-card">
-                        <div class="tl-meta">
-                            <span class="tl-year">2023 – 2024</span>
-                            <div class="tl-school">IUT Béthune</div>
-                            <div class="tl-city">Béthune</div>
-                            <div class="tl-spec">Réseaux & Télécommunications</div>
-                        </div>
+                        <div class="tl-meta"><span class="tl-year">2023 – 2024</span><div class="tl-school">IUT Béthune</div><div class="tl-city">Béthune</div><div class="tl-spec">Réseaux & Télécommunications</div></div>
                         <p class="tl-desc">Après l'obtention de mon bac, je me suis tourné vers l'IUT de Béthune pour poursuivre mon cursus en informatique.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal">
                     <div class="tl-card">
-                        <div class="tl-meta">
-                            <span class="tl-year">2021 – 2023</span>
-                            <div class="tl-school">Lycée Jean Prouvé</div>
-                            <div class="tl-city">Lomme – Lille</div>
-                            <div class="tl-spec">STI2D · Spécialité SIN</div>
-                        </div>
+                        <div class="tl-meta"><span class="tl-year">2021 – 2023</span><div class="tl-school">Lycée Jean Prouvé</div><div class="tl-city">Lomme – Lille</div><div class="tl-spec">STI2D · Spécialité SIN</div></div>
                         <p class="tl-desc">J'ai passé un bac STI2D obtenu avec la mention Assez Bien.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal">
                     <div class="tl-card">
-                        <div class="tl-meta">
-                            <span class="tl-year">2020 – 2021</span>
-                            <div class="tl-school">Lycée Beaupré</div>
-                            <div class="tl-city">Haubourdin</div>
-                            <div class="tl-spec">Général & Technologique</div>
-                        </div>
+                        <div class="tl-meta"><span class="tl-year">2020 – 2021</span><div class="tl-school">Lycée Beaupré</div><div class="tl-city">Haubourdin</div><div class="tl-spec">Général & Technologique</div></div>
                         <p class="tl-desc">J'ai rapidement eu une préférence pour les maths et les matières scientifiques, ce qui m'a orienté vers la filière STI2D.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Skills -->
+            <div class="section-heading reveal">
+                <div class="icon"><i class="bi bi-briefcase-fill" style="color:#fff"></i></div>
+                <h2>Expérience professionnelle</h2>
+            </div>
+            <div class="timeline" style="margin-bottom:3rem">
+                <div class="timeline-item reveal">
+                    <div class="tl-card">
+                        <div class="tl-meta"><span class="tl-year">2024 – présent</span><div class="tl-school">Caiss'Mag Systèmes</div><div class="tl-city">Faches-Thumesnil</div><div class="tl-spec">Alternant technicien informatique</div></div>
+                        <p class="tl-desc">Installation et maintenance de caisses enregistreuses, terminaux tactiles et balances professionnelles. Support technique auprès des clients et gestion des interventions sur site.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="section-heading reveal">
                 <div class="icon"><i class="bi bi-lightning-charge-fill" style="color:#fff"></i></div>
                 <h2>Compétences</h2>
@@ -158,6 +159,8 @@
                         <span class="skill-tag">Communication</span>
                         <span class="skill-tag">Travail en équipe</span>
                         <span class="skill-tag">Capacité d'adaptation</span>
+                        <span class="skill-tag">Support client</span>
+                        <span class="skill-tag">Rigueur</span>
                     </div>
                 </div>
                 <div class="skills-group">
@@ -166,6 +169,16 @@
                         <span class="skill-tag">HTML</span>
                         <span class="skill-tag">CSS</span>
                         <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Réseaux TCP/IP</span>
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <div class="skills-group-title">Langues</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Français – Natif</span>
+                        <span class="skill-tag">Anglais – Intermédiaire</span>
                     </div>
                 </div>
             </div>
@@ -173,20 +186,17 @@
     </main>
 
     <footer>
-        <div class="footer-bottom">
-            <span>© Enzo Savary 2025</span>
-            <span>BTS SIO – Marcq-en-Barœul</span>
-        </div>
+        <div class="footer-bottom"><span>© <span id="year"></span> Enzo Savary</span><span>BTS SIO – Marcq-en-Barœul</span></div>
     </footer>
 
     <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('mobileMenu');
+        burger.addEventListener('click', () => { burger.classList.toggle('open'); menu.classList.toggle('open'); });
         const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 100); observer.unobserve(entry.target); }
-            });
-        }, { threshold: 0.08 });
-        reveals.forEach(el => observer.observe(el));
+        const obs = new IntersectionObserver((entries)=>{ entries.forEach((e)=>{ if(e.isIntersecting){e.target.classList.add('visible'); obs.unobserve(e.target);} }); },{threshold:.08});
+        reveals.forEach(el=>obs.observe(el));
     </script>
 </body>
 </html>
