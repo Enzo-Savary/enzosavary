@@ -3,20 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Présentation de Caiss'Mag Systèmes, l'entreprise d'alternance d'Enzo Savary – spécialiste des solutions d'encaissement depuis 1992." />
+    <meta name="author" content="Enzo Savary" />
     <title>Entreprise – Enzo Savary</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg: #0a0a0f; --card: #13131a; --card2: #1a1a24; --border: rgba(255,255,255,0.07);
-            --accent: #6c63ff; --accent2: #ff6584; --text: #e8e8f0; --muted: #7a7a9a; --radius: 14px;
-            --font: 'Space Grotesk', sans-serif;
-        }
-        html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); font-family: var(--font); font-weight: 300; line-height: 1.7; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        :root { --bg:#0a0a0f; --card:#13131a; --card2:#1a1a24; --border:rgba(255,255,255,0.07); --accent:#6c63ff; --accent2:#ff6584; --text:#e8e8f0; --muted:#7a7a9a; --radius:14px; --font:'Space Grotesk',sans-serif; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text); font-family:var(--font); font-weight:300; line-height:1.7; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column; }
         body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:.5; }
 
         nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5vw; background:rgba(10,10,15,0.75); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
@@ -25,38 +23,51 @@
         .nav-links a { color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .25s; }
         .nav-links a:hover { color:var(--text); }
         .nav-links a.active { color:var(--accent); }
+        .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.3rem; }
+        .burger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:transform .3s,opacity .3s; }
+        .burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity:0; }
+        .burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; background:rgba(10,10,15,0.97); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); z-index:99; padding:1.5rem 5vw; flex-direction:column; gap:1.2rem; }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a { color:var(--muted); text-decoration:none; font-size:1rem; font-weight:500; text-transform:uppercase; transition:color .25s; }
+        .mobile-menu a:hover, .mobile-menu a.active { color:var(--accent); }
 
-        main { flex:1; padding: 8rem 5vw 5rem; position: relative; z-index:1; }
-        .page-inner { max-width: 860px; margin: 0 auto; }
-
-        .page-header { margin-bottom: 3.5rem; }
+        main { flex:1; padding:8rem 5vw 5rem; position:relative; z-index:1; }
+        .page-inner { max-width:860px; margin:0 auto; }
+        .page-header { margin-bottom:3.5rem; }
         .page-label { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:.75rem; }
         .divider { width:50px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin-bottom:1.5rem; }
         .page-title { font-family:var(--font); font-size:clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; background:linear-gradient(135deg,#fff 40%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-        /* COMPANY CARD */
-        .company-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 2rem; }
+        .company-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:1.5rem; }
+        .company-logo-wrap { background:#fff; display:flex; align-items:center; justify-content:center; padding:2.5rem; border-bottom:1px solid var(--border); min-height:160px; }
+        .company-logo-wrap img { max-height:90px; max-width:260px; object-fit:contain; }
+        .company-logo-placeholder { font-family:var(--font); font-size:1.8rem; font-weight:700; color:var(--accent); }
+        .company-body { padding:2rem 2.5rem; }
+        .company-name { font-family:var(--font); font-size:1.5rem; font-weight:700; letter-spacing:-.02em; margin-bottom:.3rem; }
+        .company-since { font-size:.8rem; color:var(--accent); font-weight:500; background:rgba(108,99,255,.12); border:1px solid rgba(108,99,255,.2); padding:.2rem .7rem; border-radius:100px; display:inline-block; margin-bottom:1.2rem; }
+        .company-desc { color:var(--muted); font-size:.95rem; font-weight:400; margin-bottom:1.2rem; }
+        .info-chips { display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:2rem; }
+        .chip { display:flex; align-items:center; gap:.45rem; background:var(--card2); border:1px solid var(--border); border-radius:100px; padding:.35rem .9rem; font-size:.82rem; color:var(--text); font-weight:400; }
+        .chip i { color:var(--accent); }
 
-        .company-logo-wrap { background: #fff; display: flex; align-items: center; justify-content: center; padding: 2.5rem; border-bottom: 1px solid var(--border); min-height: 180px; }
-        .company-logo-wrap img { max-height: 100px; max-width: 280px; object-fit: contain; }
-        .company-logo-placeholder { font-family: var(--font); font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+        .sub-title { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:1rem; }
 
-        .company-body { padding: 2rem 2.5rem; }
-        .company-name { font-family: var(--font); font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .3rem; }
-        .company-since { font-size: .8rem; color: var(--accent); font-weight: 500; background: rgba(108,99,255,.12); border: 1px solid rgba(108,99,255,.2); padding: .2rem .7rem; border-radius: 100px; display: inline-block; margin-bottom: 1.2rem; }
-        .company-desc { color: var(--muted); font-size: .95rem; font-weight: 400; margin-bottom: 1.5rem; }
+        /* Mon rôle */
+        .role-card { background:var(--card2); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem 1.6rem; margin-bottom:2rem; border-left:3px solid var(--accent); }
+        .role-card h3 { font-family:var(--font); font-size:.95rem; font-weight:600; margin-bottom:.5rem; }
+        .role-card p { color:var(--muted); font-size:.88rem; }
 
-        /* Info chips */
-        .info-chips { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2rem; }
-        .chip { display: flex; align-items: center; gap: .45rem; background: var(--card2); border: 1px solid var(--border); border-radius: 100px; padding: .35rem .9rem; font-size: .82rem; color: var(--text); font-weight: 400; }
-        .chip i { color: var(--accent); }
-
-        /* Services grid */
-        .services-title { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: .8rem; }
-        .service-item { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; display: flex; align-items: center; gap: .6rem; font-size: .85rem; font-weight: 400; transition: border-color .2s; }
-        .service-item:hover { border-color: rgba(108,99,255,.35); }
-        .service-item i { color: var(--accent2); font-size: 1rem; flex-shrink: 0; }
+        /* Clients & services */
+        .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2rem; }
+        .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:.8rem; }
+        .service-item { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:.9rem 1rem; display:flex; align-items:center; gap:.6rem; font-size:.85rem; font-weight:400; transition:border-color .2s; }
+        .service-item:hover { border-color:rgba(108,99,255,.35); }
+        .service-item i { color:var(--accent2); font-size:1rem; flex-shrink:0; }
+        .sector-list { display:flex; flex-direction:column; gap:.6rem; }
+        .sector-item { display:flex; align-items:center; gap:.6rem; font-size:.88rem; color:var(--muted); }
+        .sector-item i { color:var(--accent); font-size:.9rem; }
 
         footer { border-top:1px solid var(--border); padding:2rem 5vw; position:relative; z-index:1; }
         .footer-bottom { max-width:860px; margin:0 auto; color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; }
@@ -64,10 +75,13 @@
         .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
         .reveal.visible { opacity:1; transform:none; }
 
-        @media (max-width:600px) {
-            .services-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width:768px) {
+            .nav-links { display:none; }
+            .burger { display:flex; }
+            .two-col { grid-template-columns:1fr; }
+            .services-grid { grid-template-columns:1fr 1fr; }
+            .company-body { padding:1.5rem; }
             .footer-bottom { flex-direction:column; gap:.3rem; }
-            .company-body { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -75,11 +89,19 @@
     <nav>
         <a class="nav-brand" href="index.html">Enzo Savary</a>
         <ul class="nav-links">
+            <li><a href="index.html">Présentation</a></li>
             <li><a href="CV.html">CV</a></li>
             <li><a href="Competence.html">Compétences</a></li>
             <li><a href="entreprise.html" class="active">Entreprise</a></li>
         </ul>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Présentation</a>
+        <a href="CV.html">CV</a>
+        <a href="Competence.html">Compétences</a>
+        <a href="entreprise.html" class="active">Entreprise</a>
+    </div>
 
     <main>
         <div class="page-inner">
@@ -97,8 +119,8 @@
                 <div class="company-body">
                     <div class="company-name">Caiss'Mag Systèmes</div>
                     <span class="company-since">Fondée en 1992</span>
-                    <p class="company-desc">Une société spécialisée depuis 1992 dans les solutions d'encaissement et de gestion pour commerces et points de vente. Elle fournit et installe des caisses enregistreuses, des terminaux tactiles, des balances professionnelles, des automates de paiement, ainsi que les logiciels associés pour différents types de commerces.</p>
-                    <p class="company-desc">L'entreprise propose aussi conseil, installation, formation et service après-vente, avec des contrats de maintenance et d'assistance.</p>
+                    <p class="company-desc">Société spécialisée depuis 1992 dans les solutions d'encaissement et de gestion pour commerces et points de vente. Elle fournit, installe et maintient des caisses enregistreuses, terminaux tactiles, balances professionnelles et automates de paiement, accompagnés de leurs logiciels de gestion.</p>
+                    <p class="company-desc">L'entreprise assure également conseil, installation, formation des utilisateurs et service après-vente, avec des contrats de maintenance et d'assistance.</p>
 
                     <div class="info-chips">
                         <span class="chip"><i class="bi bi-geo-alt-fill"></i> Faches-Thumesnil, 59</span>
@@ -106,16 +128,39 @@
                         <span class="chip"><i class="bi bi-shop"></i> Commerce & Retail</span>
                     </div>
 
-                    <div class="services-title">Domaines d'activité</div>
-                    <div class="services-grid">
-                        <div class="service-item"><i class="bi bi-display"></i> Caisses enregistreuses</div>
-                        <div class="service-item"><i class="bi bi-phone"></i> Terminaux tactiles</div>
-                        <div class="service-item"><i class="bi bi-speedometer2"></i> Balances professionnelles</div>
-                        <div class="service-item"><i class="bi bi-credit-card-2-front"></i> Automates de paiement</div>
-                        <div class="service-item"><i class="bi bi-code-square"></i> Logiciels de gestion</div>
-                        <div class="service-item"><i class="bi bi-tools"></i> SAV & Maintenance</div>
-                        <div class="service-item"><i class="bi bi-person-workspace"></i> Formation</div>
-                        <div class="service-item"><i class="bi bi-headset"></i> Assistance</div>
+                    <!-- Mon rôle -->
+                    <div class="sub-title">Mon rôle en alternance</div>
+                    <div class="role-card">
+                        <h3>Alternant technicien informatique</h3>
+                        <p>Installation et mise en service de caisses enregistreuses et terminaux de paiement chez les clients. Maintenance préventive et curative du matériel, support technique par téléphone et sur site, et formation des utilisateurs aux logiciels de gestion.</p>
+                    </div>
+
+                    <!-- Deux colonnes : services + secteurs clients -->
+                    <div class="two-col">
+                        <div>
+                            <div class="sub-title">Activités de l'entreprise</div>
+                            <div class="services-grid">
+                                <div class="service-item"><i class="bi bi-display"></i> Caisses enregistreuses</div>
+                                <div class="service-item"><i class="bi bi-phone"></i> Terminaux tactiles</div>
+                                <div class="service-item"><i class="bi bi-speedometer2"></i> Balances pro.</div>
+                                <div class="service-item"><i class="bi bi-credit-card-2-front"></i> Automates de paiement</div>
+                                <div class="service-item"><i class="bi bi-code-square"></i> Logiciels de gestion</div>
+                                <div class="service-item"><i class="bi bi-tools"></i> SAV & Maintenance</div>
+                                <div class="service-item"><i class="bi bi-person-workspace"></i> Formation</div>
+                                <div class="service-item"><i class="bi bi-headset"></i> Assistance</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="sub-title">Secteurs clients</div>
+                            <div class="sector-list">
+                                <div class="sector-item"><i class="bi bi-check-circle-fill"></i> Restauration & fast-food</div>
+                                <div class="sector-item"><i class="bi bi-check-circle-fill"></i> Boulangeries & pâtisseries</div>
+                                <div class="sector-item"><i class="bi bi-check-circle-fill"></i> Prêt-à-porter & mode</div>
+                                <div class="sector-item"><i class="bi bi-check-circle-fill"></i> Supérettes & épiceries</div>
+                                <div class="sector-item"><i class="bi bi-check-circle-fill"></i> Tabac-presse</div>
+                                <div class="sector-item"><i class="bi bi-check-circle-fill"></i> Pharmacies</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,20 +168,17 @@
     </main>
 
     <footer>
-        <div class="footer-bottom">
-            <span>© Enzo Savary 2025</span>
-            <span>BTS SIO – Marcq-en-Barœul</span>
-        </div>
+        <div class="footer-bottom"><span>© <span id="year"></span> Enzo Savary</span><span>BTS SIO – Marcq-en-Barœul</span></div>
     </footer>
 
     <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('mobileMenu');
+        burger.addEventListener('click', () => { burger.classList.toggle('open'); menu.classList.toggle('open'); });
         const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 100); observer.unobserve(entry.target); }
-            });
-        }, { threshold: 0.08 });
-        reveals.forEach(el => observer.observe(el));
+        const obs = new IntersectionObserver((entries)=>{ entries.forEach((e)=>{ if(e.isIntersecting){e.target.classList.add('visible'); obs.unobserve(e.target);} }); },{threshold:.08});
+        reveals.forEach(el=>obs.observe(el));
     </script>
 </body>
 </html>
