@@ -1,181 +1,681 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Portfolio d'Enzo Savary, étudiant BTS SIO en alternance à Marcq-en-Barœul. Découvrez mon parcours, mes compétences et mon entreprise." />
-    <meta name="author" content="Enzo Savary" />
-    <title>Enzo Savary – BTS SIO</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --bg:#0a0a0f; --card:#13131a; --border:rgba(255,255,255,0.07); --accent:#6c63ff; --accent2:#ff6584; --gold:#f5c842; --text:#e8e8f0; --muted:#7a7a9a; --radius:14px; --font:'Space Grotesk',sans-serif; }
-        html { scroll-behavior:smooth; }
-        body { background:var(--bg); color:var(--text); font-family:var(--font); font-weight:300; line-height:1.7; overflow-x:hidden; }
-        body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:.5; }
- 
-        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5vw; background:rgba(10,10,15,0.75); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
-        .nav-brand { font-family:var(--font); font-weight:700; font-size:1.1rem; letter-spacing:-.02em; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none; }
-        .nav-links { display:flex; gap:2rem; list-style:none; }
-        .nav-links a { color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .25s; }
-        .nav-links a:hover { color:var(--text); }
-        .nav-links a.active { color:var(--accent); }
- 
-        .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:.3rem; }
-        .burger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:transform .3s,opacity .3s; }
-        .burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-        .burger.open span:nth-child(2) { opacity:0; }
-        .burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-        .mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; background:rgba(10,10,15,0.97); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); z-index:99; padding:1.5rem 5vw; flex-direction:column; gap:1.2rem; }
-        .mobile-menu.open { display:flex; }
-        .mobile-menu a { color:var(--muted); text-decoration:none; font-size:1rem; font-weight:500; letter-spacing:.05em; text-transform:uppercase; transition:color .25s; }
-        .mobile-menu a:hover, .mobile-menu a.active { color:var(--accent); }
- 
-        .hero { min-height:100vh; display:flex; align-items:center; padding:7rem 5vw 4rem; position:relative; overflow:hidden; }
-        .blob { position:absolute; border-radius:50%; filter:blur(90px); opacity:.22; pointer-events:none; }
-        .blob-1 { width:500px; height:500px; background:var(--accent); top:-100px; right:-100px; }
-        .blob-2 { width:350px; height:350px; background:var(--accent2); bottom:0; left:-80px; }
-        .hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; width:100%; position:relative; z-index:1; }
-        .hero-tag { display:inline-flex; align-items:center; gap:.5rem; background:rgba(108,99,255,.12); border:1px solid rgba(108,99,255,.3); color:var(--accent); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; padding:.35rem 1rem; border-radius:100px; margin-bottom:1.5rem; font-weight:500; }
-        .hero-tag span { width:6px; height:6px; background:var(--accent); border-radius:50%; animation:pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
-        h1 { font-family:var(--font); font-size:clamp(2.8rem,5vw,4.5rem); font-weight:700; line-height:1.05; letter-spacing:-.03em; margin-bottom:1.5rem; }
-        .grad { background:linear-gradient(135deg,#fff 30%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .hero-desc { color:var(--muted); font-size:1rem; max-width:420px; margin-bottom:2.5rem; font-weight:400; }
-        .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
-        .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#fff; padding:.75rem 1.6rem; border-radius:100px; text-decoration:none; font-weight:500; font-size:.9rem; transition:transform .2s,box-shadow .2s; box-shadow:0 0 30px rgba(108,99,255,.3); font-family:var(--font); }
-        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 40px rgba(108,99,255,.45); }
-        .btn-ghost { display:inline-flex; align-items:center; gap:.5rem; border:1px solid var(--border); color:var(--text); padding:.75rem 1.6rem; border-radius:100px; text-decoration:none; font-weight:400; font-size:.9rem; transition:border-color .2s,background .2s; font-family:var(--font); }
-        .btn-ghost:hover { border-color:var(--accent); background:rgba(108,99,255,.08); }
-        .avatar-wrap { display:flex; justify-content:center; align-items:center; }
-        .avatar-ring { position:relative; width:300px; height:300px; }
-        .avatar-ring::before { content:''; position:absolute; inset:-4px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2),var(--gold)); z-index:0; animation:spin 8s linear infinite; }
-        @keyframes spin { to { transform:rotate(360deg); } }
-        .avatar-ring::after { content:''; position:absolute; inset:2px; border-radius:50%; background:var(--bg); z-index:1; }
-        .avatar-ring img { position:relative; z-index:2; width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:top; }
- 
-        .section { padding:6rem 5vw; position:relative; z-index:1; }
-        .section-label { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:.75rem; }
-        .section-title { font-family:var(--font); font-size:clamp(1.8rem,3vw,2.4rem); font-weight:700; letter-spacing:-.02em; margin-bottom:2.5rem; }
-        .divider { width:50px; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; margin-bottom:1.5rem; }
-        .about-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
-        .about-text p { color:var(--muted); margin-bottom:1.2rem; font-size:.98rem; font-weight:400; }
-        .about-text strong { color:var(--text); font-weight:600; }
-        .card-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-        .card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem; transition:border-color .25s,transform .25s; }
-        .card:hover { border-color:rgba(108,99,255,.4); transform:translateY(-3px); }
-        .card-icon { font-size:1.5rem; margin-bottom:.6rem; display:block; }
-        .card h4 { font-family:var(--font); font-size:.9rem; font-weight:600; margin-bottom:.3rem; }
-        .card p { color:var(--muted); font-size:.83rem; }
-        .socials { display:flex; gap:1rem; margin-top:2rem; }
-        .social-btn { display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; background:var(--card); border:1px solid var(--border); color:var(--muted); font-size:1.1rem; text-decoration:none; transition:background .2s,color .2s,border-color .2s; }
-        .social-btn:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
- 
-        footer { border-top:1px solid var(--border); padding:3rem 5vw; position:relative; z-index:1; }
-        .footer-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr 1fr; gap:2.5rem; }
-        .footer-col h5 { font-family:var(--font); font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
-        .footer-col p,.footer-col a { color:var(--muted); font-size:.85rem; display:block; margin-bottom:.4rem; text-decoration:none; }
-        .footer-col a:hover { color:var(--text); }
-        .footer-bottom { max-width:1100px; margin:2.5rem auto 0; padding-top:1.5rem; border-top:1px solid var(--border); color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; align-items:center; }
- 
-        .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
-        .reveal.visible { opacity:1; transform:none; }
- 
-        @media (max-width:768px) {
-            .nav-links { display:none; }
-            .burger { display:flex; }
-            .hero-inner,.about-grid,.footer-inner { grid-template-columns:1fr; }
-            .avatar-wrap { order:-1; }
-            .avatar-ring { width:200px; height:200px; }
-            .card-grid { grid-template-columns:1fr; }
-            .footer-bottom { flex-direction:column; gap:.5rem; text-align:center; }
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Portfolio d'Enzo Savary – BTS SIO SISR Session 2025."/>
+<meta name="author" content="Enzo Savary"/>
+<title>Enzo Savary – BTS SIO SISR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;
+  --border:rgba(255,255,255,.07);
+  --accent:#6c63ff;--accent2:#ff6584;--gold:#f5c842;
+  --text:#e8e8f0;--muted:#7a7a9a;--r:14px;
+  --f:'Space Grotesk',sans-serif
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-weight:300;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
+nav.scrolled{padding:.7rem 5vw}
+.nav-brand{font-weight:700;font-size:1.05rem;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-links{display:flex;gap:.1rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:.38rem .65rem;border-radius:100px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.nav-links a.active{color:var(--accent);background:rgba(108,99,255,.12)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.3rem}
+.burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(10,10,15,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);z-index:199;padding:1.2rem 5vw;flex-direction:column;gap:.7rem}
+.mob.open{display:flex}
+.mob a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;text-transform:uppercase;padding:.45rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mob a:last-child{border-bottom:none}
+.mob a:hover,.mob a.active{color:var(--accent)}
+
+/* ── LAYOUT ── */
+section{position:relative;z-index:1}
+.sec{padding:5.5rem 5vw}
+.si{max-width:1000px;margin:0 auto}
+.lbl{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.55rem}
+.bar{width:42px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin-bottom:1.2rem}
+.stitle{font-family:var(--f);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:700;letter-spacing:-.025em;margin-bottom:1.8rem}
+.sep{border:none;border-top:1px solid var(--border);margin:0 5vw}
+.grad{background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ── BLOBS ── */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.2;pointer-events:none}
+.b1{width:500px;height:500px;background:var(--accent);top:-100px;right:-100px}
+.b2{width:350px;height:350px;background:var(--accent2);bottom:0;left:-80px}
+
+/* ── HERO ── */
+#accueil{min-height:100vh;display:flex;align-items:center;padding:7rem 5vw 3rem;overflow:hidden}
+.hi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%}
+.htag{display:inline-flex;align-items:center;gap:.45rem;background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.3);color:var(--accent);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .85rem;border-radius:100px;margin-bottom:1.2rem;font-weight:500}
+.htag span{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+h1{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.2rem}
+.hdesc{color:var(--muted);font-size:.95rem;max-width:420px;margin-bottom:2rem}
+.hcta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.bp{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;padding:.68rem 1.45rem;border-radius:100px;text-decoration:none;font-weight:500;font-size:.86rem;transition:transform .2s,box-shadow .2s;box-shadow:0 0 22px rgba(108,99,255,.3)}
+.bp:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(108,99,255,.45)}
+.bg{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);color:var(--text);padding:.68rem 1.45rem;border-radius:100px;text-decoration:none;font-weight:400;font-size:.86rem;transition:border-color .2s,background .2s}
+.bg:hover{border-color:var(--accent);background:rgba(108,99,255,.08)}
+.qnav{display:flex;flex-wrap:wrap;gap:.5rem}
+.qp{display:inline-flex;align-items:center;gap:.38rem;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:.75rem;font-weight:500;padding:.3rem .85rem;border-radius:100px;text-decoration:none;transition:border-color .2s,color .2s,background .2s}
+.qp:hover{border-color:var(--accent);color:var(--text);background:rgba(108,99,255,.08)}
+.qp i{font-size:.75rem;color:var(--accent)}
+.aw{display:flex;justify-content:center}
+.ar{position:relative;width:290px;height:290px}
+.ar::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--gold));z-index:0;animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ar::after{content:'';position:absolute;inset:2px;border-radius:50%;background:var(--bg);z-index:1}
+.ar img{position:relative;z-index:2;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top}
+
+/* ── ABOUT ── */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.at p{color:var(--muted);margin-bottom:1rem;font-size:.93rem}
+.at strong{color:var(--text);font-weight:600}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.c{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;transition:border-color .25s,transform .25s}
+.c:hover{border-color:rgba(108,99,255,.4);transform:translateY(-3px)}
+.ci{font-size:1.35rem;margin-bottom:.45rem;display:block}
+.c h4{font-size:.86rem;font-weight:600;margin-bottom:.2rem}
+.c p{color:var(--muted);font-size:.78rem}
+.soc{display:flex;gap:.75rem;margin-top:1.6rem}
+.sb{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:1.05rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.sb:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ── SECTION HEADING ── */
+.sh{display:flex;align-items:center;gap:.65rem;margin-bottom:1.2rem;margin-top:2.2rem}
+.sh .ico{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.sh h3{font-size:.97rem;font-weight:600}
+
+/* ── TIMELINE ── */
+.tl{position:relative;padding-left:1.3rem;border-left:2px solid var(--border);margin-bottom:2.2rem}
+.tli{position:relative;margin-bottom:1.2rem}
+.tli::before{content:'';position:absolute;left:-1.75rem;top:.28rem;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.tlc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.4rem;display:grid;grid-template-columns:125px 1fr;gap:1.2rem;align-items:start;transition:border-color .25s}
+.tlc:hover{border-color:rgba(108,99,255,.3)}
+.tly{font-size:.73rem;font-weight:600;color:var(--accent);background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.2);padding:.18rem .6rem;border-radius:100px;display:inline-block;margin-bottom:.45rem}
+.tls{font-weight:600;font-size:.88rem;margin-bottom:.1rem}
+.tlct{font-size:.76rem;color:var(--muted)}
+.tlsp{font-size:.76rem;color:var(--accent2);font-weight:500;margin-top:.22rem}
+.tld{color:var(--muted);font-size:.86rem}
+
+/* ── SKILLS ── */
+.skc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem}
+.skg{margin-bottom:1.6rem}
+.skg:last-child{margin-bottom:0}
+.skt{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.7rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tag{background:var(--card2);border:1px solid var(--border);color:var(--text);font-size:.8rem;font-weight:500;padding:.25rem .75rem;border-radius:100px;transition:border-color .2s}
+.tag:hover{border-color:var(--accent)}
+
+/* ── COMPETENCES ── */
+.compg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:.95rem}
+.compc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem;display:grid;grid-template-columns:36px 1fr;gap:.9rem;align-items:start;transition:border-color .25s,transform .25s}
+.compc:hover{border-color:rgba(108,99,255,.4);transform:translateY(-3px)}
+.cn{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:700;color:#fff}
+.cb h3{font-size:.88rem;font-weight:600;margin-bottom:.5rem}
+.cb p{color:var(--muted);font-size:.8rem;line-height:1.52}
+.comp-list{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.comp-list li{color:var(--muted);font-size:.78rem;line-height:1.5;padding-left:.9rem;position:relative}
+.comp-list li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:.7rem}
+
+/* ── PROJETS ── */
+.projg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem}
+.projc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .25s,transform .25s;display:flex;flex-direction:column}
+.projc:hover{border-color:rgba(108,99,255,.4);transform:translateY(-4px)}
+.projh{padding:.9rem 1.3rem;background:linear-gradient(135deg,rgba(108,99,255,.13),rgba(255,101,132,.07));border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem}
+.projico{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;flex-shrink:0}
+.projh h3{font-size:.92rem;font-weight:600}
+.projb{padding:1.1rem 1.3rem;flex:1;display:flex;flex-direction:column;gap:.8rem}
+.projb p{color:var(--muted);font-size:.83rem;line-height:1.58;flex:1}
+.projtags{display:flex;flex-wrap:wrap;gap:.4rem}
+.ptag{background:var(--card2);border:1px solid var(--border);color:var(--muted);font-size:.72rem;font-weight:500;padding:.18rem .65rem;border-radius:100px}
+.projdate{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:.35rem}
+.projdate i{color:var(--accent);font-size:.7rem}
+
+/* ── E4 ── */
+.ibox{background:rgba(108,99,255,.08);border:1px solid rgba(108,99,255,.2);border-radius:var(--r);padding:1rem 1.3rem;margin-bottom:1.8rem;display:flex;gap:.85rem;align-items:flex-start}
+.ibox i{color:var(--accent);font-size:1.05rem;flex-shrink:0;margin-top:.1rem}
+.ibox p{color:var(--muted);font-size:.83rem}
+.ibox strong{color:var(--text)}
+.sit{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1.3rem;transition:border-color .25s}
+.sit:hover{border-color:rgba(108,99,255,.35)}
+.sith{padding:1.3rem 1.7rem;background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(255,101,132,.06));border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:.9rem}
+.sn{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0}
+.st h2{font-size:1rem;font-weight:700;margin-bottom:.28rem}
+.sm{display:flex;gap:.55rem;flex-wrap:wrap}
+.sbg{font-size:.7rem;font-weight:500;padding:.16rem .62rem;border-radius:100px}
+.bc{background:rgba(108,99,255,.12);color:var(--accent);border:1px solid rgba(108,99,255,.2)}
+.bd{background:rgba(255,101,132,.1);color:var(--accent2);border:1px solid rgba(255,101,132,.2)}
+.sitb{padding:1.3rem 1.7rem}
+.fl{margin-bottom:1.2rem}
+.fl:last-child{margin-bottom:0}
+.fll{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.38rem}
+.flc{color:var(--muted);font-size:.88rem}
+.flc strong{color:var(--text);font-weight:500}
+.ctags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.38rem}
+.ctag{background:var(--card2);border:1px solid var(--border);color:var(--text);font-size:.75rem;font-weight:500;padding:.2rem .72rem;border-radius:100px}
+.dlr{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem 1.7rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.9rem}
+.dlr h3{font-size:.92rem;font-weight:600;margin-bottom:.18rem}
+.dlr p{color:var(--muted);font-size:.8rem}
+.dlb{display:inline-flex;align-items:center;gap:.42rem;background:var(--accent);color:#fff;padding:.62rem 1.35rem;border-radius:100px;text-decoration:none;font-weight:500;font-size:.83rem;transition:transform .2s,box-shadow .2s;box-shadow:0 0 16px rgba(108,99,255,.25);white-space:nowrap}
+.dlb:hover{transform:translateY(-2px);box-shadow:0 6px 26px rgba(108,99,255,.4)}
+
+/* ── VEILLE ── */
+.toolg{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:.85rem;margin-bottom:2.2rem}
+.toolc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;display:flex;align-items:center;gap:.85rem;transition:border-color .25s,transform .2s}
+.toolc:hover{border-color:rgba(108,99,255,.4);transform:translateY(-2px)}
+.tooli{width:36px;height:36px;border-radius:8px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.tooli2 h4{font-size:.83rem;font-weight:600;margin-bottom:.08rem}
+.tooli2 p{color:var(--muted);font-size:.7rem}
+.artc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem 1.7rem;margin-bottom:.95rem;transition:border-color .25s}
+.artc:hover{border-color:rgba(108,99,255,.3)}
+.artm{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:.65rem}
+.tg{font-size:.68rem;font-weight:600;padding:.16rem .62rem;border-radius:100px}
+.ts{background:rgba(108,99,255,.12);color:var(--accent);border:1px solid rgba(108,99,255,.2)}
+.tse{background:rgba(255,101,132,.1);color:var(--accent2);border:1px solid rgba(255,101,132,.2)}
+.td{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+.artc h3{font-size:.95rem;font-weight:600;margin-bottom:.45rem}
+.artc p{color:var(--muted);font-size:.84rem;line-height:1.6}
+.arts{margin-top:.65rem;font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:.32rem}
+.arts i{color:var(--accent)}
+
+/* ── ENTREPRISE ── */
+.comc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.comlw{background:#fff;display:flex;align-items:center;justify-content:center;padding:1.8rem;border-bottom:1px solid var(--border);min-height:130px}
+.comlw img{max-height:75px;max-width:230px;object-fit:contain}
+.comlph{font-size:1.5rem;font-weight:700;color:var(--accent)}
+.comb{padding:1.7rem 2rem}
+.comn{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.22rem}
+.coms{font-size:.76rem;color:var(--accent);font-weight:500;background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.2);padding:.16rem .62rem;border-radius:100px;display:inline-block;margin-bottom:.95rem}
+.comd{color:var(--muted);font-size:.88rem;margin-bottom:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1.6rem}
+.chip{display:flex;align-items:center;gap:.38rem;background:var(--card2);border:1px solid var(--border);border-radius:100px;padding:.28rem .82rem;font-size:.78rem;color:var(--text)}
+.chip i{color:var(--accent)}
+.subt{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.85rem}
+.rolec{background:var(--card2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.4rem;margin-bottom:1.6rem;border-left:3px solid var(--accent)}
+.rolec h3{font-size:.9rem;font-weight:600;margin-bottom:.38rem}
+.rolec p{color:var(--muted);font-size:.84rem}
+.twoc{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.srvg{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:.65rem}
+.srvi{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.75rem .9rem;display:flex;align-items:center;gap:.5rem;font-size:.8rem;transition:border-color .2s}
+.srvi:hover{border-color:rgba(108,99,255,.3)}
+.srvi i{color:var(--accent2);font-size:.9rem;flex-shrink:0}
+.sectl{display:flex;flex-direction:column;gap:.5rem}
+.secti{display:flex;align-items:center;gap:.5rem;font-size:.84rem;color:var(--muted)}
+.secti i{color:var(--accent);font-size:.8rem}
+
+/* ── CONTACT ── */
+.contg{display:grid;grid-template-columns:1fr 1fr;gap:.95rem;margin-bottom:1.8rem}
+.contc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem;display:flex;align-items:center;gap:.95rem;text-decoration:none;transition:border-color .25s,transform .25s}
+.contc:hover{border-color:rgba(108,99,255,.4);transform:translateY(-3px)}
+.contico{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:#fff;flex-shrink:0}
+.conti h4{font-size:.88rem;font-weight:600;margin-bottom:.12rem}
+.conti p{color:var(--muted);font-size:.76rem}
+.infc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem}
+.infc h3{font-size:.92rem;font-weight:600;margin-bottom:1rem}
+.infr{display:flex;align-items:center;gap:.7rem;margin-bottom:.75rem;color:var(--muted);font-size:.86rem}
+.infr i{color:var(--accent);font-size:.9rem;width:17px;flex-shrink:0}
+.infr a{color:var(--muted);text-decoration:none;transition:color .2s}
+.infr a:hover{color:var(--text)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:2.2rem 5vw;position:relative;z-index:1}
+.fi{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.fi span{color:var(--muted);font-size:.78rem}
+
+/* ── REVEAL ── */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .nav-links{display:none}.burger{display:flex}
+  .hi{grid-template-columns:1fr}.aw{order:-1}.ar{width:190px;height:190px}
+  .ag{grid-template-columns:1fr}.cg{grid-template-columns:1fr 1fr}
+  .compg{grid-template-columns:1fr}.projg{grid-template-columns:1fr}
+  .tlc{grid-template-columns:1fr;gap:.55rem}
+  .contg{grid-template-columns:1fr}.twoc{grid-template-columns:1fr}
+  .dlr{flex-direction:column}.fi{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){.cg{grid-template-columns:1fr}.qnav{gap:.35rem}}
+</style>
 </head>
 <body>
-    <nav>
-        <a class="nav-brand" href="index.html">Enzo Savary</a>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Présentation</a></li>
-            <li><a href="CV.html">CV</a></li>
-            <li><a href="Competence.html">Compétences</a></li>
-            <li><a href="entreprise.html">Entreprise</a></li>
-        </ul>
-        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="active">Présentation</a>
-        <a href="CV.html">CV</a>
-        <a href="Competence.html">Compétences</a>
-        <a href="entreprise.html">Entreprise</a>
+
+<!-- NAV -->
+<nav id="nb">
+  <a class="nav-brand" href="#accueil">Enzo Savary</a>
+  <ul class="nav-links">
+    <li><a href="#accueil">Présentation</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#e4">Épreuve E4</a></li>
+    <li><a href="#veille">Veille</a></li>
+    <li><a href="#entreprise">Entreprise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="burger" id="bg" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mm">
+  <a href="#accueil" onclick="cm()">Présentation</a>
+  <a href="#cv" onclick="cm()">CV</a>
+  <a href="#competences" onclick="cm()">Compétences</a>
+  <a href="#projets" onclick="cm()">Projets</a>
+  <a href="#e4" onclick="cm()">Épreuve E4</a>
+  <a href="#veille" onclick="cm()">Veille</a>
+  <a href="#entreprise" onclick="cm()">Entreprise</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+</div>
+
+<!-- ══════════════ ACCUEIL ══════════════ -->
+<section id="accueil">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="hi">
+    <div class="rev">
+      <div class="htag"><span></span>Étudiant BTS SIO SISR</div>
+      <h1><span class="grad">Enzo<br>Savary</span></h1>
+      <p class="hdesc">Passionné par l'informatique et les systèmes d'information, je prépare mon BTS SIO en alternance à Marcq-en-Barœul.</p>
+      <div class="hcta">
+        <a class="bp" href="#cv"><i class="bi bi-file-person"></i>Mon CV</a>
+        <a class="bg" href="#contact"><i class="bi bi-envelope"></i>Me contacter</a>
+      </div>
+      <div class="qnav">
+        <a class="qp" href="#cv"><i class="bi bi-file-earmark-person"></i>CV</a>
+        <a class="qp" href="#competences"><i class="bi bi-code-slash"></i>Compétences</a>
+        <a class="qp" href="#projets"><i class="bi bi-folder2-open"></i>Projets</a>
+        <a class="qp" href="#e4"><i class="bi bi-journal-check"></i>Épreuve E4</a>
+        <a class="qp" href="#veille"><i class="bi bi-rss"></i>Veille</a>
+        <a class="qp" href="#entreprise"><i class="bi bi-building"></i>Entreprise</a>
+      </div>
     </div>
- 
-    <main>
-        <section class="hero">
-            <div class="blob blob-1"></div>
-            <div class="blob blob-2"></div>
-            <div class="hero-inner">
-                <div class="hero-text reveal">
-                    <div class="hero-tag"><span></span> Étudiant BTS SIO</div>
-                    <h1><span class="grad">Enzo<br>Savary</span></h1>
-                    <p class="hero-desc">Passionné par l'informatique et les systèmes d'information, je prépare mon BTS SIO en alternance à Marcq-en-Barœul.</p>
-                    <div class="hero-cta">
-                        <a href="CV.html" class="btn-primary"><i class="bi bi-file-person"></i> Voir mon CV</a>
-                        <a href="Competence.html" class="btn-ghost"><i class="bi bi-code-slash"></i> Mes compétences</a>
-                    </div>
-                </div>
-                <div class="avatar-wrap reveal">
-                    <div class="avatar-ring"><img src="photo (3).png" alt="Photo de profil d'Enzo Savary" /></div>
-                </div>
-            </div>
-        </section>
- 
-        <section class="section">
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p class="section-label">À propos</p>
-                    <div class="divider"></div>
-                    <h2 class="section-title">Qui suis-je ?</h2>
-                    <p>Je m'appelle <strong>Enzo Savary</strong> et je prépare un <strong>BTS Services Informatiques aux Organisations</strong> en alternance à l'AFPI de Marcq-en-Barœul.</p>
-                    <p>J'ai obtenu mon baccalauréat technologique <strong>STI2D</strong> à Lille avec la mention <strong>Assez Bien</strong>, ce qui m'a permis d'acquérir de solides bases techniques avant de me spécialiser en informatique.</p>
-                    <p>Curieux, rigoureux et motivé, je cherche à développer mes compétences dans un environnement professionnel stimulant.</p>
-                    <div class="socials">
-                        <a class="social-btn" href="https://twitter.com/Zozo59240" title="Twitter / X" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i></a>
-                        <a class="social-btn" href="https://www.linkedin.com/in/enzo-savary-5879ab2a2" title="LinkedIn" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="card-grid reveal">
-                    <div class="card"><span class="card-icon">🎓</span><h4>Formation</h4><p>BTS SIO en alternance à l'AFPI Alternance</p></div>
-                    <div class="card"><span class="card-icon">📍</span><h4>Localisation</h4><p>Marcq-en-Barœul, Nord (59)</p></div>
-                    <div class="card"><span class="card-icon">🏫</span><h4>Bac obtenu</h4><p>STI2D – Mention Assez Bien</p></div>
-                    <div class="card"><span class="card-icon">💻</span><h4>Domaine</h4><p>Systèmes d'information & réseaux</p></div>
-                </div>
-            </div>
-        </section>
-    </main>
- 
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-col"><h5>Contact</h5><p>+33 6 35 02 03 10</p><a href="https://www.linkedin.com/in/enzo-savary-5879ab2a2" target="_blank" rel="noopener">LinkedIn</a><a href="https://twitter.com/Zozo59240" target="_blank" rel="noopener">Twitter / X</a></div>
-            <div class="footer-col"><h5>Mentions légales</h5><p>BTS Services Informatiques aux Organisations</p><p>AFPI Alternance</p><p>59700 – Marcq-en-Barœul, France</p></div>
-            <div class="footer-col"><h5>Crédits</h5><p>Réalisé avec Bootstrap, Google Fonts & Bootstrap Icons.</p><p>Icônes par Enzo Savary et Google.</p></div>
+    <div class="aw rev"><div class="ar"><img src="photo (3).png" alt="Photo Enzo Savary"/></div></div>
+  </div>
+</section>
+
+<!-- À propos (pas de section id pour ne pas polluer la nav) -->
+<div class="sec" style="padding-top:1.5rem">
+  <div class="si">
+    <div class="ag">
+      <div class="rev">
+        <p class="lbl">À propos</p><div class="bar"></div>
+        <h2 class="stitle" style="font-size:1.75rem">Qui suis-je ?</h2>
+        <div class="at">
+          <p>Je m'appelle <strong>Enzo Savary</strong> et je prépare un <strong>BTS Services Informatiques aux Organisations</strong> en alternance à l'AFPI de Marcq-en-Barœul.</p>
+          <p>J'ai obtenu mon baccalauréat technologique <strong>STI2D</strong> à Lille avec la mention <strong>Assez Bien</strong>, ce qui m'a permis d'acquérir de solides bases avant de me spécialiser en informatique.</p>
+          <p>Curieux, rigoureux et motivé, je cherche à développer mes compétences dans un environnement professionnel stimulant.</p>
         </div>
-        <div class="footer-bottom"><span>© <span id="year"></span> Enzo Savary</span><span>BTS SIO – Marcq-en-Barœul</span></div>
-    </footer>
- 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('mobileMenu');
-        burger.addEventListener('click', () => { burger.classList.toggle('open'); menu.classList.toggle('open'); });
-        document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); menu.classList.remove('open'); }));
-        const reveals = document.querySelectorAll('.reveal');
-        new IntersectionObserver((entries) => { entries.forEach((e,i) => { if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*120);} }); }, {threshold:.1}).observe ? reveals.forEach(el => new IntersectionObserver((entries,i) => { entries.forEach((e) => { if(e.isIntersecting){e.target.classList.add('visible');} }); },{threshold:.1}).observe(el)) : null;
-        const obs = new IntersectionObserver((entries)=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100); obs.unobserve(e.target);} }); },{threshold:.1});
-        reveals.forEach(el=>obs.observe(el));
-    </script>
+        <div class="soc">
+          <a class="sb" href="https://twitter.com/Zozo59240" target="_blank" rel="noopener" title="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+          <a class="sb" href="https://www.linkedin.com/in/enzo-savary-5879ab2a2" target="_blank" rel="noopener" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="cg rev">
+        <div class="c"><span class="ci">🎓</span><h4>Formation</h4><p>BTS SIO en alternance – AFPI</p></div>
+        <div class="c"><span class="ci">📍</span><h4>Localisation</h4><p>Marcq-en-Barœul, Nord (59)</p></div>
+        <div class="c"><span class="ci">🏫</span><h4>Bac obtenu</h4><p>STI2D – Mention Assez Bien</p></div>
+        <div class="c"><span class="ci">💻</span><h4>Domaine</h4><p>Systèmes & réseaux</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep"/>
+
+<!-- ══════════════ CV ══════════════ -->
+<section id="cv" class="sec">
+  <div class="si">
+    <div class="rev"><p class="lbl">Parcours</p><div class="bar"></div><h2 class="stitle">Curriculum Vitæ</h2></div>
+
+    <div class="sh rev"><div class="ico"><i class="bi bi-mortarboard-fill" style="color:#fff;font-size:.8rem"></i></div><h3>Formation</h3></div>
+    <div class="tl">
+      <div class="tli rev"><div class="tlc"><div><span class="tly">2024 – 2026</span><div class="tls">AFPI Alternance</div><div class="tlct">Marcq-en-Barœul</div><div class="tlsp">BTS SIO SISR</div></div><p class="tld">Suite à une réorientation depuis l'IUT de Béthune, je prépare mon BTS SIO en alternance à l'AFPI. Mon entreprise d'accueil est Caiss'Mag Systèmes à Faches-Thumesnil.</p></div></div>
+      <div class="tli rev"><div class="tlc"><div><span class="tly">2023 – 2024</span><div class="tls">IUT Béthune</div><div class="tlct">Béthune</div><div class="tlsp">Réseaux & Télécoms</div></div><p class="tld">Première année d'informatique en DUT Réseaux et Télécommunications après l'obtention du bac.</p></div></div>
+      <div class="tli rev"><div class="tlc"><div><span class="tly">2021 – 2023</span><div class="tls">Lycée Jean Prouvé</div><div class="tlct">Lomme – Lille</div><div class="tlsp">STI2D · SIN</div></div><p class="tld">Bac STI2D obtenu avec la mention Assez Bien, spécialité Systèmes d'Information et Numérique.</p></div></div>
+      <div class="tli rev"><div class="tlc"><div><span class="tly">2020 – 2021</span><div class="tls">Lycée Beaupré</div><div class="tlct">Haubourdin</div><div class="tlsp">Général & Technologique</div></div><p class="tld">Attirance pour les matières scientifiques (maths, physique-chimie), m'orientant vers la filière STI2D.</p></div></div>
+    </div>
+
+    <div class="sh rev"><div class="ico"><i class="bi bi-briefcase-fill" style="color:#fff;font-size:.8rem"></i></div><h3>Expérience professionnelle</h3></div>
+    <div class="tl" style="margin-bottom:2.2rem">
+      <div class="tli rev"><div class="tlc"><div><span class="tly">2024 – présent</span><div class="tls">Caiss'Mag Systèmes</div><div class="tlct">Faches-Thumesnil</div><div class="tlsp">Alternant technicien IT</div></div><p class="tld">Installation et maintenance de caisses enregistreuses, terminaux tactiles et balances professionnelles. Support client, gestion des interventions sur site et ticketing.</p></div></div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- ══════════════ COMPÉTENCES ══════════════ -->
+<section id="competences" class="sec">
+  <div class="si">
+    <div class="rev"><p class="lbl">BTS SIO SISR</p><div class="bar"></div><h2 class="stitle">Compétences</h2></div>
+    <div class="compg">
+      <div class="compc rev">
+        <div class="cn">01</div>
+        <div class="cb">
+          <h3>Gérer le patrimoine informatique</h3>
+          <ul class="comp-list">
+            <li>Recenser et identifier les ressources numériques</li>
+            <li>Exploiter des référentiels, normes et standards adoptés par le prestataire</li>
+            <li>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li>
+            <li>Vérifier les conditions de la continuité d'un service informatique</li>
+            <li>Gérer des sauvegardes</li>
+            <li>Vérifier le respect des règles d'utilisation des ressources numériques</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compc rev">
+        <div class="cn">02</div>
+        <div class="cb">
+          <h3>Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
+          <ul class="comp-list">
+            <li>Collecter, suivre et orienter des demandes</li>
+            <li>Traiter des demandes concernant les services réseau et système, applicatifs</li>
+            <li>Traiter des demandes concernant les applications</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compc rev">
+        <div class="cn">03</div>
+        <div class="cb">
+          <h3>Développer la présence en ligne de l'organisation</h3>
+          <ul class="comp-list">
+            <li>Participer à la valorisation de l'image de l'organisation sur les médias numériques</li>
+            <li>Référencer les services en ligne de l'organisation et mesurer leur visibilité</li>
+            <li>Participer à l'évolution d'un site Web exploitant les données de l'organisation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compc rev">
+        <div class="cn">04</div>
+        <div class="cb">
+          <h3>Travailler en mode projet</h3>
+          <ul class="comp-list">
+            <li>Analyser les objectifs et les modalités d'organisation d'un projet</li>
+            <li>Planifier les activités</li>
+            <li>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compc rev">
+        <div class="cn">05</div>
+        <div class="cb">
+          <h3>Mettre à disposition des utilisateurs un service informatique</h3>
+          <ul class="comp-list">
+            <li>Réaliser les tests d'intégration et d'acceptation d'un service</li>
+            <li>Déployer un service</li>
+            <li>Accompagner les utilisateurs dans la mise en place d'un service</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compc rev">
+        <div class="cn">06</div>
+        <div class="cb">
+          <h3>Organiser son développement professionnel</h3>
+          <ul class="comp-list">
+            <li>Mettre en place son environnement d'apprentissage personnel</li>
+            <li>Mettre en œuvre des outils et stratégies de veille informationnelle</li>
+            <li>Gérer son identité professionnelle</li>
+            <li>Développer son projet professionnel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- ══════════════ PROJETS ══════════════ -->
+<section id="projets" class="sec">
+  <div class="si">
+    <div class="rev"><p class="lbl">Réalisations</p><div class="bar"></div><h2 class="stitle">Projets</h2></div>
+    <div class="projg">
+
+      <div class="projc rev">
+        <div class="projh">
+          <div class="projico"><i class="bi bi-server"></i></div>
+          <h3>Serveur AD-DNS-DHCP</h3>
+        </div>
+        <div class="projb">
+          <p>Déploiement d'un contrôleur de domaine Active Directory sur Windows Server 2019 avec intégration des services DNS et DHCP. Tests de jointure de postes clients au domaine.</p>
+          <div class="projtags"><span class="ptag">Windows Server</span><span class="ptag">Active Directory</span><span class="ptag">DNS</span><span class="ptag">DHCP</span></div>
+          <div class="projdate"><i class="bi bi-calendar3"></i>Oct. – Nov. 2024</div>
+        </div>
+      </div>
+
+      <div class="projc rev">
+        <div class="projh">
+          <div class="projico"><i class="bi bi-globe"></i></div>
+          <h3>Portfolio web personnel</h3>
+        </div>
+        <div class="projb">
+          <p>Conception et développement de ce portfolio en HTML/CSS avec design moderne et navigation en une seule page. Mise en valeur du parcours BTS SIO SISR.</p>
+          <div class="projtags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">Responsive</span><span class="ptag">Design</span></div>
+          <div class="projdate"><i class="bi bi-calendar3"></i>Avr. – Mai 2025</div>
+        </div>
+      </div>
+
+      <div class="projc rev">
+        <div class="projh">
+          <div class="projico"><i class="bi bi-pc-display"></i></div>
+          <h3>Virtualisation VirtualBox</h3>
+        </div>
+        <div class="projb">
+          <p>Création et gestion de machines virtuelles sous VirtualBox. Déploiement de différents systèmes d'exploitation (Windows Server, Linux) pour pratiquer l'administration système en environnement isolé.</p>
+          <div class="projtags"><span class="ptag">VirtualBox</span><span class="ptag">Linux</span><span class="ptag">Windows</span><span class="ptag">Virtualisation</span></div>
+          <div class="projdate"><i class="bi bi-calendar3"></i>Oct. – Déc. 2024</div>
+        </div>
+      </div>
+
+      <div class="projc rev">
+        <div class="projh">
+          <div class="projico"><i class="bi bi-shield-lock"></i></div>
+          <h3>GPO – Stratégies de groupe</h3>
+        </div>
+        <div class="projb">
+          <p>Configuration de stratégies de groupe (GPO) sur Windows Server 2019 pour appliquer des politiques de sécurité aux postes clients du domaine : fond d'écran, restrictions d'accès, gestion des mots de passe.</p>
+          <div class="projtags"><span class="ptag">GPO</span><span class="ptag">Windows Server</span><span class="ptag">Active Directory</span><span class="ptag">Sécurité</span></div>
+          <div class="projdate"><i class="bi bi-calendar3"></i>Nov. – Déc. 2024</div>
+        </div>
+      </div>
+
+      <div class="projc rev">
+        <div class="projh">
+          <div class="projico"><i class="bi bi-database"></i></div>
+          <h3>Base de données SQL</h3>
+        </div>
+        <div class="projb">
+          <p>Création et manipulation de bases de données relationnelles avec scripts SQL : modélisation, création de tables, requêtes SELECT/INSERT/UPDATE/DELETE, jointures et gestion des utilisateurs.</p>
+          <div class="projtags"><span class="ptag">SQL</span><span class="ptag">MySQL</span><span class="ptag">Base de données</span><span class="ptag">Modélisation</span></div>
+          <div class="projdate"><i class="bi bi-calendar3"></i>Avr. 2025</div>
+        </div>
+      </div>
+
+      <div class="projc rev">
+        <div class="projh">
+          <div class="projico"><i class="bi bi-diagram-3"></i></div>
+          <h3>Spanning Tree & Réseau</h3>
+        </div>
+        <div class="projb">
+          <p>Configuration du protocole Spanning Tree (STP) sur des switches pour éviter les boucles réseau. Étude du modèle OSI et mise en pratique sur simulateur réseau Cisco Packet Tracer.</p>
+          <div class="projtags"><span class="ptag">Spanning Tree</span><span class="ptag">Cisco</span><span class="ptag">Réseau</span><span class="ptag">OSI</span></div>
+          <div class="projdate"><i class="bi bi-calendar3"></i>Nov. 2024</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- ══════════════ E4 ══════════════ -->
+<section id="e4" class="sec">
+  <div class="si">
+    <div class="rev"><p class="lbl">BTS SIO SISR – Session 2025</p><div class="bar"></div><h2 class="stitle">Épreuve E4</h2></div>
+    <div class="dlr rev">
+      <div><h3>Tableau de synthèse – Épreuve E4</h3><p>Document officiel BTS SIO SISR Session 2025 – toutes les réalisations</p></div>
+      <a class="dlb" href="assets/Tableau_competences_BTS_SIO_Enzo_Savary.xlsx" download><i class="bi bi-file-earmark-excel-fill"></i>Télécharger</a>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- ══════════════ VEILLE ══════════════ -->
+<section id="veille" class="sec">
+  <div class="si">
+    <div class="rev"><p class="lbl">BTS SIO SISR</p><div class="bar"></div><h2 class="stitle">Veille technologique</h2></div>
+
+    <div class="sh rev"><div class="ico"><i class="bi bi-tools" style="color:#fff;font-size:.8rem"></i></div><h3>Outils de veille</h3></div>
+    <div class="toolg rev">
+      <div class="toolc"><div class="tooli">📰</div><div class="tooli2"><h4>Feedly</h4><p>Agrégateur RSS</p></div></div>
+      <div class="toolc"><div class="tooli">🔴</div><div class="tooli2"><h4>Reddit</h4><p>r/sysadmin, r/networking</p></div></div>
+      <div class="toolc"><div class="tooli">🐦</div><div class="tooli2"><h4>Twitter / X</h4><p>Comptes IT & sécu</p></div></div>
+      <div class="toolc"><div class="tooli">🔗</div><div class="tooli2"><h4>LinkedIn</h4><p>Publications pro</p></div></div>
+      <div class="toolc"><div class="tooli">📡</div><div class="tooli2"><h4>ANSSI</h4><p>Alertes sécurité</p></div></div>
+      <div class="toolc"><div class="tooli">📺</div><div class="tooli2"><h4>YouTube</h4><p>Tutos réseau & sysadmin</p></div></div>
+    </div>
+
+    <div class="sh rev"><div class="ico"><i class="bi bi-newspaper" style="color:#fff;font-size:.8rem"></i></div><h3>Articles de veille</h3></div>
+
+    <div class="artc rev">
+      <div class="artm"><span class="tg ts">SISR – Active Directory</span><span class="tg td">2024</span></div>
+      <h3>Active Directory : pilier des réseaux Windows en entreprise</h3>
+      <p>Active Directory centralise la gestion des utilisateurs, machines et GPO au sein d'un domaine Windows Server. Il permet l'authentification unique (SSO), la délégation d'administration et l'application de configurations à distance. Sa maîtrise est une compétence clé pour tout technicien SISR.</p>
+      <div class="arts"><i class="bi bi-link-45deg"></i>Sources : Microsoft Docs, cours Windows Server 2019 – AFPI</div>
+    </div>
+    <div class="artc rev">
+      <div class="artm"><span class="tg tse">Cybersécurité</span><span class="tg td">2025</span></div>
+      <h3>Les bonnes pratiques de sécurisation d'un réseau local</h3>
+      <p>La sécurisation passe par la segmentation VLAN, la mise en place d'un pare-feu, le filtrage MAC sur les switches et des politiques de mots de passe robustes via GPO. L'ANSSI recommande aussi la mise à jour régulière des équipements et la journalisation des accès.</p>
+      <div class="arts"><i class="bi bi-link-45deg"></i>Sources : ANSSI – Guide d'hygiène informatique, cours BTS SIO</div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- ══════════════ ENTREPRISE ══════════════ -->
+<section id="entreprise" class="sec">
+  <div class="si">
+    <div class="rev"><p class="lbl">Alternance</p><div class="bar"></div><h2 class="stitle">Mon entreprise</h2></div>
+    <div class="comc rev">
+      <div class="comlw">
+        <img src="cms.jpg" alt="Logo Caiss'Mag Systèmes" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <div class="comlph" style="display:none">CMS</div>
+      </div>
+      <div class="comb">
+        <div class="comn">Caiss'Mag Systèmes</div>
+        <span class="coms">Fondée en 1992</span>
+        <p class="comd">Société spécialisée dans les solutions d'encaissement et de gestion pour commerces et points de vente. Elle fournit, installe et maintient des caisses enregistreuses, terminaux tactiles, balances professionnelles et automates de paiement avec leurs logiciels de gestion.</p>
+        <div class="chips">
+          <span class="chip"><i class="bi bi-geo-alt-fill"></i>Faches-Thumesnil, 59</span>
+          <span class="chip"><i class="bi bi-calendar3"></i>Depuis 1992</span>
+          <span class="chip"><i class="bi bi-shop"></i>Commerce & Retail</span>
+        </div>
+        <div class="subt">Mon rôle en alternance</div>
+        <div class="rolec"><h3>Alternant technicien informatique</h3><p>Installation et mise en service de caisses et terminaux chez les clients. Maintenance préventive et curative, support technique, formation des utilisateurs aux logiciels de gestion.</p></div>
+        <div class="twoc">
+          <div>
+            <div class="subt">Activités</div>
+            <div class="srvg">
+              <div class="srvi"><i class="bi bi-display"></i>Caisses</div>
+              <div class="srvi"><i class="bi bi-phone"></i>Terminaux</div>
+              <div class="srvi"><i class="bi bi-speedometer2"></i>Balances</div>
+              <div class="srvi"><i class="bi bi-credit-card-2-front"></i>Paiement</div>
+              <div class="srvi"><i class="bi bi-code-square"></i>Logiciels</div>
+              <div class="srvi"><i class="bi bi-tools"></i>SAV</div>
+            </div>
+          </div>
+          <div>
+            <div class="subt">Secteurs clients</div>
+            <div class="sectl">
+              <div class="secti"><i class="bi bi-check-circle-fill"></i>Restauration & fast-food</div>
+              <div class="secti"><i class="bi bi-check-circle-fill"></i>Boulangeries & pâtisseries</div>
+              <div class="secti"><i class="bi bi-check-circle-fill"></i>Prêt-à-porter & mode</div>
+              <div class="secti"><i class="bi bi-check-circle-fill"></i>Supérettes & épiceries</div>
+              <div class="secti"><i class="bi bi-check-circle-fill"></i>Pharmacies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="sec">
+  <div class="si">
+    <div class="rev"><p class="lbl">Portfolio</p><div class="bar"></div><h2 class="stitle">Contact</h2></div>
+    <div class="contg rev">
+      <a class="contc" href="mailto:enzo.savary@example.com"><div class="contico"><i class="bi bi-envelope-fill"></i></div><div class="conti"><h4>Email</h4><p>Envoyez-moi un message</p></div></a>
+      <a class="contc" href="tel:+33635020310"><div class="contico"><i class="bi bi-telephone-fill"></i></div><div class="conti"><h4>Téléphone</h4><p>+33 6 35 02 03 10</p></div></a>
+      <a class="contc" href="https://www.linkedin.com/in/enzo-savary-5879ab2a2" target="_blank" rel="noopener"><div class="contico"><i class="bi bi-linkedin"></i></div><div class="conti"><h4>LinkedIn</h4><p>Mon profil professionnel</p></div></a>
+      <a class="contc" href="https://twitter.com/Zozo59240" target="_blank" rel="noopener"><div class="contico"><i class="bi bi-twitter-x"></i></div><div class="conti"><h4>Twitter / X</h4><p>@Zozo59240</p></div></a>
+    </div>
+    <div class="infc rev">
+      <h3>Informations</h3>
+      <div class="infr"><i class="bi bi-person-fill"></i><span>Enzo Savary</span></div>
+      <div class="infr"><i class="bi bi-mortarboard-fill"></i><span>BTS SIO option SISR – Session 2025</span></div>
+      <div class="infr"><i class="bi bi-building"></i><span>AFPI Alternance – Marcq-en-Barœul (59)</span></div>
+      <div class="infr"><i class="bi bi-briefcase-fill"></i><span>Alternant chez Caiss'Mag Systèmes – Faches-Thumesnil</span></div>
+      <div class="infr"><i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/enzo-savary-5879ab2a2" target="_blank" rel="noopener">linkedin.com/in/enzo-savary-5879ab2a2</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <span>© <span id="yr"></span> Enzo Savary – BTS SIO SISR</span>
+    <span>AFPI Alternance – Marcq-en-Barœul</span>
+    <span>Tous droits réservés</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Burger
+const burger = document.getElementById('bg');
+const mm = document.getElementById('mm');
+burger.addEventListener('click', () => { burger.classList.toggle('open'); mm.classList.toggle('open'); });
+function cm() { burger.classList.remove('open'); mm.classList.remove('open'); }
+
+// Scroll reveal
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.rev').forEach(el => ro.observe(el));
+
+// Active nav + shrink
+const secs = document.querySelectorAll('section[id]');
+const nls = document.querySelectorAll('.nav-links a');
+const nb = document.getElementById('nb');
+window.addEventListener('scroll', () => {
+  nb.classList.toggle('scrolled', window.scrollY > 40);
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+  nls.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+}, { passive: true });
+</script>
 </body>
 </html>
