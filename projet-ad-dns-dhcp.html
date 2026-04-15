@@ -283,37 +283,6 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
       </div>
     </div>
 
-    <!-- DIFFICULTÉS & SOLUTIONS -->
-    <div class="sec-card rev">
-      <div class="sec-head">
-        <div class="sec-ico"><i class="bi bi-exclamation-triangle-fill"></i></div>
-        <h2>Difficultés rencontrées & solutions</h2>
-      </div>
-      <div class="diff-list">
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Le poste client ne rejoignait pas le domaine</h4></div>
-          <div class="diff-sol">
-            <div class="diff-sol-label">✓ Solution</div>
-            <p>Le DNS du poste client pointait vers un mauvais serveur. Après avoir forcé l'adresse DNS du poste vers <code style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;color:var(--accent2);font-family:monospace">192.168.1.1</code> (le serveur), la jonction au domaine a fonctionné correctement.</p>
-          </div>
-        </div>
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Le service DHCP n'attribuait pas d'adresses</h4></div>
-          <div class="diff-sol">
-            <div class="diff-sol-label">✓ Solution</div>
-            <p>Le serveur DHCP n'était pas autorisé dans l'Active Directory. Après avoir effectué l'autorisation via la console DHCP (clic droit → Autoriser), le service a démarré et attribué les adresses normalement.</p>
-          </div>
-        </div>
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Conflit d'adresses IP entre les VMs</h4></div>
-          <div class="diff-sol">
-            <div class="diff-sol-label">✓ Solution</div>
-            <p>L'adresse statique du serveur était dans la plage DHCP, ce qui créait des conflits. Résolu en définissant une exclusion dans la plage DHCP pour l'adresse du serveur et en vérifiant la configuration réseau des VMs sur VirtualBox (mode réseau interne).</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </main>
 
