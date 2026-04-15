@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Portfolio Web Personnel – Enzo Savary, BTS SIO SISR."/>
+<meta name="author" content="Enzo Savary"/>
+<title>Portfolio Web – Enzo Savary</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+
+<style>
+/* ==== STYLE IDENTIQUE (repris) ==== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;
+--border:rgba(255,255,255,.07);
+--accent:#6c63ff;--accent2:#ff6584;
+--text:#e8e8f0;--muted:#7a7a9a;
+--r:14px;
+--f:'Space Grotesk',sans-serif
+}
+body{background:var(--bg);color:var(--text);font-family:var(--f);line-height:1.7}
+
+/* NAV */
+nav{
+position:fixed;top:0;left:0;right:0;
+display:flex;justify-content:space-between;
+padding:1rem 5vw;
+background:rgba(10,10,15,.9);
+border-bottom:1px solid var(--border)
+}
+.nav-brand{font-weight:700;color:var(--accent);text-decoration:none}
+.nav-back{color:var(--muted);text-decoration:none;font-size:.85rem}
+
+/* MAIN */
+main{padding:7rem 5vw}
+.inner{max-width:900px;margin:auto}
+
+/* HERO */
+.proj-title{font-size:2.5rem;font-weight:700;margin-bottom:1rem}
+.ptag{background:var(--card2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem}
+
+/* CARD */
+.sec-card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:var(--r);
+padding:1.8rem;
+margin-bottom:1.5rem
+}
+.sec-head{display:flex;gap:.6rem;margin-bottom:1rem}
+.sec-ico{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+padding:.5rem;border-radius:8px
+}
+
+/* LIST */
+.step{margin-bottom:1rem}
+.step h3{font-size:.95rem}
+.step p{font-size:.85rem;color:var(--muted)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted)}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a class="nav-brand" href="index.html">Enzo Savary</a>
+<a class="nav-back" href="index.html#projets">← Retour</a>
+</nav>
+
+<main>
+<div class="inner">
+
+<!-- HERO -->
+<h1 class="proj-title">Portfolio Web Personnel</h1>
+
+<div style="margin-bottom:2rem">
+<span class="ptag">HTML</span>
+<span class="ptag">CSS</span>
+<span class="ptag">Design moderne</span>
+<span class="ptag">One Page</span>
+</div>
+
+<!-- CONTEXTE -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-info-circle"></i></div>
+<h2>Contexte & objectif</h2>
+</div>
+
+<p>
+Dans le cadre de ma formation en <strong>BTS SIO SISR</strong>, j’ai conçu et développé un portfolio web personnel afin de présenter mon parcours, mes compétences et mes projets.
+</p>
+
+<p>
+L’objectif principal était de créer un site moderne, fluide et professionnel permettant de valoriser mon profil auprès de recruteurs ou d’entreprises.
+</p>
+</div>
+
+<!-- REALISATION -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-code-slash"></i></div>
+<h2>Réalisation</h2>
+</div>
+
+<div class="step">
+<h3>Structure HTML</h3>
+<p>Création d’une structure claire en une seule page avec différentes sections : accueil, à propos, compétences et projets.</p>
+</div>
+
+<div class="step">
+<h3>Design CSS moderne</h3>
+<p>Mise en place d’un design sombre avec des couleurs modernes, animations et effets visuels pour améliorer l’expérience utilisateur.</p>
+</div>
+
+<div class="step">
+<h3>Navigation fluide</h3>
+<p>Utilisation du scroll fluide pour naviguer entre les sections sans rechargement de page.</p>
+</div>
+
+<div class="step">
+<h3>Responsive design</h3>
+<p>Adaptation du site pour mobile, tablette et ordinateur.</p>
+</div>
+
+</div>
+
+<!-- COMPETENCES -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-lightning"></i></div>
+<h2>Compétences mobilisées</h2>
+</div>
+
+<div class="step">
+<h3>Développement web</h3>
+<p>Maîtrise du HTML et CSS pour la création d’interfaces web modernes.</p>
+</div>
+
+<div class="step">
+<h3>Design UI/UX</h3>
+<p>Création d’une interface claire, lisible et agréable à utiliser.</p>
+</div>
+
+<div class="step">
+<h3>Valorisation professionnelle</h3>
+<p>Mise en avant des projets et compétences dans un objectif d’insertion professionnelle.</p>
+</div>
+
+</div>
+
+<!-- RESULTAT -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-check-circle"></i></div>
+<h2>Résultat</h2>
+</div>
+
+<p>
+Ce portfolio constitue une vitrine professionnelle me permettant de présenter efficacement mon parcours en BTS SIO SISR, mes compétences techniques et mes réalisations.
+</p>
+
+</div>
+
+</div>
+</main>
+
+<footer>
+© 2026 – Enzo Savary | Portfolio BTS SIO SISR
+</footer>
+
+</body>
+</html>
