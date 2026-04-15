@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Projet Virtualisation VirtualBox – Enzo Savary, BTS SIO SISR."/>
+<meta name="author" content="Enzo Savary"/>
+<title>Virtualisation VirtualBox – Enzo Savary</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;
+--border:rgba(255,255,255,.07);
+--accent:#6c63ff;--accent2:#ff6584;
+--text:#e8e8f0;--muted:#7a7a9a;
+--r:14px;
+--f:'Space Grotesk',sans-serif
+}
+body{background:var(--bg);color:var(--text);font-family:var(--f);line-height:1.7}
+
+/* NAV */
+nav{
+position:fixed;top:0;left:0;right:0;
+display:flex;justify-content:space-between;
+padding:1rem 5vw;
+background:rgba(10,10,15,.9);
+border-bottom:1px solid var(--border)
+}
+.nav-brand{font-weight:700;color:var(--accent);text-decoration:none}
+.nav-back{color:var(--muted);text-decoration:none;font-size:.85rem}
+
+/* MAIN */
+main{padding:7rem 5vw}
+.inner{max-width:900px;margin:auto}
+
+/* HERO */
+.proj-title{font-size:2.5rem;font-weight:700;margin-bottom:1rem}
+.ptag{background:var(--card2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem}
+
+/* CARD */
+.sec-card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:var(--r);
+padding:1.8rem;
+margin-bottom:1.5rem
+}
+.sec-head{display:flex;gap:.6rem;margin-bottom:1rem}
+.sec-ico{
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+padding:.5rem;border-radius:8px
+}
+
+/* LIST */
+.step{margin-bottom:1rem}
+.step h3{font-size:.95rem}
+.step p{font-size:.85rem;color:var(--muted)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted)}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a class="nav-brand" href="index.html">Enzo Savary</a>
+<a class="nav-back" href="index.html#projets">← Retour</a>
+</nav>
+
+<main>
+<div class="inner">
+
+<!-- HERO -->
+<h1 class="proj-title">Virtualisation VirtualBox</h1>
+
+<div style="margin-bottom:2rem">
+<span class="ptag">VirtualBox</span>
+<span class="ptag">Windows Server</span>
+<span class="ptag">Linux</span>
+<span class="ptag">Virtualisation</span>
+<span class="ptag">Réseau</span>
+</div>
+
+<!-- CONTEXTE -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-info-circle"></i></div>
+<h2>Contexte & objectif</h2>
+</div>
+
+<p>
+Dans le cadre de ma formation en <strong>BTS SIO SISR</strong>, j’ai utilisé l’outil VirtualBox afin de créer et gérer des machines virtuelles.
+</p>
+
+<p>
+L’objectif était de disposer d’un environnement isolé permettant de tester différentes configurations systèmes sans impacter le système principal.
+</p>
+</div>
+
+<!-- REALISATION -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-hdd-network"></i></div>
+<h2>Réalisation</h2>
+</div>
+
+<div class="step">
+<h3>Création de machines virtuelles</h3>
+<p>Configuration de plusieurs VM avec allocation de ressources (RAM, CPU, stockage).</p>
+</div>
+
+<div class="step">
+<h3>Installation des systèmes</h3>
+<p>Déploiement de différents systèmes d’exploitation : Windows Server et distributions Linux.</p>
+</div>
+
+<div class="step">
+<h3>Configuration réseau</h3>
+<p>Mise en place de réseaux internes et NAT pour permettre la communication entre machines virtuelles.</p>
+</div>
+
+<div class="step">
+<h3>Tests et administration</h3>
+<p>Utilisation des VM pour tester des services (Active Directory, DNS, DHCP) et s’exercer à l’administration système.</p>
+</div>
+
+</div>
+
+<!-- COMPETENCES -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-lightning"></i></div>
+<h2>Compétences mobilisées</h2>
+</div>
+
+<div class="step">
+<h3>Virtualisation</h3>
+<p>Maîtrise de la création et gestion d’environnements virtualisés.</p>
+</div>
+
+<div class="step">
+<h3>Administration système</h3>
+<p>Installation, configuration et gestion de systèmes Windows et Linux.</p>
+</div>
+
+<div class="step">
+<h3>Gestion réseau</h3>
+<p>Compréhension des configurations réseau en environnement virtualisé.</p>
+</div>
+
+</div>
+
+<!-- RESULTAT -->
+<div class="sec-card">
+<div class="sec-head">
+<div class="sec-ico"><i class="bi bi-check-circle"></i></div>
+<h2>Résultat</h2>
+</div>
+
+<p>
+Ce projet m’a permis de travailler dans un environnement sécurisé et flexible, idéal pour expérimenter et développer mes compétences en administration système dans le cadre du BTS SIO SISR.
+</p>
+
+</div>
+
+</div>
+</main>
+
+<footer>
+© 2026 – Enzo Savary | BTS SIO SISR
+</footer>
+
+</body>
+</html>
