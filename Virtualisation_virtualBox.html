@@ -133,46 +133,13 @@ L’objectif était de disposer d’un environnement isolé permettant de tester
       
       
  <div class="sec-card rev">
-      <div class="sec-head">
-        <div class="sec-ico"><i class="bi bi-images"></i></div>
-        <h2>Captures d'écran</h2>
-      </div>
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-images"></i></div><h2>Captures d'écran</h2></div>
       <div class="screenshots">
-        <div class="screenshot-slot" onclick="triggerUpload(this)">
-          <div class="overlay"><i class="bi bi-pencil"></i></div>
-          <i class="bi bi-window-plus"></i>
-          <p class="slot-label">Installation Windows Server</p>
-          <img src="installation-promotion-ad-ds.png">
-        </div>
-        <div class="screenshot-slot" onclick="triggerUpload(this)">
-          <div class="overlay"><i class="bi bi-pencil"></i></div>
-          <i class="bi bi-diagram-2"></i>
-          <p class="slot-label">Configuration DNS</p>
-          <img src="Capture-d-ecran-config-dns.png">
-        </div>
-        <div class="screenshot-slot" onclick="triggerUpload(this)">
-          <input type="file" accept="image/*" onchange="loadImg(this)"/>
-          <div class="overlay"><i class="bi bi-pencil"></i></div>
-          <i class="bi bi-hdd-network"></i>
-          <p class="slot-label">Plage DHCP</p>
-          <p>Cliquez pour ajouter une capture</p>
-        </div>
-        <div class="screenshot-slot" onclick="triggerUpload(this)">
-          <input type="file" accept="image/*" onchange="loadImg(this)"/>
-          <div class="overlay"><i class="bi bi-pencil"></i></div>
-          <i class="bi bi-people"></i>
-          <p class="slot-label">Utilisateurs & UO dans l'AD</p>
-          <p>Cliquez pour ajouter une capture</p>
-        </div>
-        <div class="screenshot-slot" onclick="triggerUpload(this)">
-          <input type="file" accept="image/*" onchange="loadImg(this)"/>
-          <div class="overlay"><i class="bi bi-pencil"></i></div>
-          <i class="bi bi-pc-display-horizontal"></i>
-          <p class="slot-label">Jonction poste client au domaine</p>
-          <p>Cliquez pour ajouter une capture</p>
-        </div>
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-window-stack"></i><p class="slot-label">Interface VirtualBox</p><p>Cliquez pour ajouter</p></div>
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-hdd-network"></i><p class="slot-label">Configuration réseau</p><p>Cliquez pour ajouter</p></div>
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-camera"></i><p class="slot-label">Gestion snapshots</p><p>Cliquez pour ajouter</p></div>
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-display-fill"></i><p class="slot-label">VM en fonctionnement</p><p>Cliquez pour ajouter</p></div>
       </div>
-    </div>
 
 
 
