@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Projet Portfolio web – Enzo Savary, BTS SIO SISR 2025."/>
+<title>Portfolio web personnel – Enzo Savary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;--border:rgba(255,255,255,.07);--accent:#6c63ff;--accent2:#ff6584;--text:#ffffff;--muted:#7a7a9a;--r:14px;--f:'Space Grotesk',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(10,10,15,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{font-weight:700;font-size:1.05rem;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-back{display:inline-flex;align-items:center;gap:.45rem;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.38rem .8rem;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s,background .2s}
+.nav-back:hover{color:var(--text);border-color:var(--accent);background:rgba(108,99,255,.08)}
+main{position:relative;z-index:1;padding:7rem 5vw 5rem}
+.inner{max-width:860px;margin:0 auto}
+.back-crumb{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.78rem;text-decoration:none;margin-bottom:1.5rem;transition:color .2s}
+.back-crumb:hover{color:var(--accent)}
+.proj-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:.6rem}
+.proj-bar{width:42px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin-bottom:1.2rem}
+.proj-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.2rem}
+.proj-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+.pmeta{display:inline-flex;align-items:center;gap:.4rem;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:var(--muted)}
+.pmeta i{color:var(--accent);font-size:.78rem}
+.ptags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2rem}
+.ptag{background:var(--card2);border:1px solid var(--border);color:var(--text);font-size:.78rem;font-weight:500;padding:.25rem .75rem;border-radius:100px}
+.sec-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem 2rem;margin-bottom:1.5rem}
+.sec-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.3rem}
+.sec-ico{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;flex-shrink:0}
+.sec-head h2{font-size:1rem;font-weight:600}
+.sec-card p{color:var(--text);font-size:.9rem;margin-bottom:.9rem;line-height:1.7}
+.sec-card p:last-child{margin-bottom:0}
+.steps{display:flex;flex-direction:column;gap:1.1rem}
+.step{display:grid;grid-template-columns:36px 1fr;gap:1rem;align-items:start}
+.step-num{width:36px;height:36px;border-radius:50%;background:rgba(108,99,255,.15);border:1px solid rgba(108,99,255,.3);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:var(--accent);flex-shrink:0}
+.step-body h3{font-size:.9rem;font-weight:600;margin-bottom:.35rem}
+.step-body p{color:var(--text);font-size:.86rem;margin:0}
+.step-body code{background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:.1rem .45rem;font-size:.8rem;color:var(--accent2);font-family:monospace}
+.screenshots{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ss{background:var(--card2);border:2px dashed var(--border);border-radius:var(--r);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;cursor:pointer;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.ss:hover{border-color:var(--accent);background:rgba(108,99,255,.06)}
+.ss i.big{font-size:1.8rem;color:var(--muted)}
+.ss p{color:var(--muted);font-size:.78rem;text-align:center;padding:0 1rem}
+.ss img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:calc(var(--r) - 2px)}
+.ss .slot-label{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.ss input{display:none}
+.ss .ov{position:absolute;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;border-radius:calc(var(--r) - 2px)}
+.ss:hover .ov{display:flex}
+.ss .ov i{font-size:1.5rem;color:#fff}
+.comp-list{display:flex;flex-direction:column;gap:.55rem}
+.comp-item{display:flex;align-items:flex-start;gap:.7rem;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem}
+.comp-item i{color:var(--accent);font-size:.95rem;flex-shrink:0;margin-top:.12rem}
+.comp-item h4{font-size:.88rem;font-weight:600;margin-bottom:.1rem}
+.comp-item p{color:var(--text);font-size:.8rem;margin:0}
+.diff-list{display:flex;flex-direction:column;gap:1rem}
+.diff-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.diff-head{padding:.8rem 1.2rem;background:rgba(255,101,132,.08);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
+.diff-head i{color:var(--accent2);font-size:.95rem}
+.diff-head h4{font-size:.88rem;font-weight:600;color:var(--accent2)}
+.diff-sol{padding:.9rem 1.2rem;background:rgba(108,99,255,.05)}
+.diff-sol-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.4rem}
+.diff-sol p{color:var(--text);font-size:.85rem;margin:0}
+footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-index:1}
+.fi{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.fi span{color:var(--muted);font-size:.78rem}
+.rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+@media(max-width:640px){.screenshots{grid-template-columns:1fr}.fi{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Enzo Savary</a>
+  <a class="nav-back" href="index.html#projets"><i class="bi bi-arrow-left"></i>Retour aux projets</a>
+</nav>
+<main>
+  <div class="inner">
+    <div class="rev">
+      <a class="back-crumb" href="index.html#projets"><i class="bi bi-arrow-left"></i> Projets</a>
+      <p class="proj-label">BTS SIO SISR – Formation</p>
+      <div class="proj-bar"></div>
+      <h1 class="proj-title">Portfolio web personnel</h1>
+      <div class="proj-meta">
+        <span class="pmeta"><i class="bi bi-calendar3"></i>Avr. – Mai 2025</span>
+        <span class="pmeta"><i class="bi bi-building"></i>AFPI Alternance</span>
+        <span class="pmeta"><i class="bi bi-person"></i>Enzo Savary</span>
+        <span class="pmeta"><i class="bi bi-code-slash"></i>Développement web</span>
+      </div>
+      <div class="ptags">
+        <span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">JavaScript</span>
+        <span class="ptag">Responsive Design</span><span class="ptag">Space Grotesk</span><span class="ptag">Bootstrap Icons</span>
+      </div>
+    </div>
+
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-info-circle-fill"></i></div><h2>Contexte & objectifs</h2></div>
+      <p>Dans le cadre du BTS SIO, la réalisation d'un portfolio numérique est une exigence officielle de l'épreuve E4. Ce site web personnel a pour but de valoriser mon parcours, mes compétences et mes réalisations professionnelles auprès du jury d'examen et des recruteurs.</p>
+      <p>L'objectif était de concevoir un site <strong style="color:var(--text)">100 % en HTML/CSS/JavaScript</strong>, sans framework, avec un design moderne, une navigation fluide et une organisation conforme aux attentes du référentiel BTS SIO (sections Présentation, CV, Compétences, Épreuve E4, Veille, Entreprise, Contact).</p>
+      <p><strong style="color:var(--text)">Contrainte principale :</strong> tout le site devait tenir en un seul fichier HTML avec navigation par ancres pour une consultation facile le jour de l'oral.</p>
+    </div>
+
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-list-check"></i></div><h2>Étapes de réalisation</h2></div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Maquettage et structure</h3><p>Définition des sections nécessaires selon le référentiel E4. Choix du design dark theme avec les couleurs <code>#6c63ff</code> (accent violet) et <code>#ff6584</code> (accent rose). Sélection de la police Space Grotesk pour son rendu moderne.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Développement de la navigation</h3><p>Création d'une barre de navigation fixe avec effet glassmorphism (<code>backdrop-filter: blur</code>), menu burger responsive pour mobile, et scroll actif qui surligne le lien de la section visible.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Section Hero et présentation</h3><p>Mise en place du hero avec photo de profil (anneau animé en dégradé), tag animé, boutons CTA et pills de navigation rapide vers chaque section.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Sections contenu</h3><p>Développement de chaque section (CV timeline, Compétences cards, E4 tableau, Veille articles, Entreprise, Contact) en réutilisant les mêmes composants CSS pour la cohérence visuelle.</p></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><h3>Animations et interactivité</h3><p>Intégration des animations au scroll via <code>IntersectionObserver</code>, switch thème clair/sombre, modal d'ajout de photos sur les projets, et transitions CSS sur tous les éléments interactifs.</p></div></div>
+        <div class="step"><div class="step-num">6</div><div class="step-body"><h3>Optimisation responsive</h3><p>Adaptation mobile complète avec media queries à 860px et 480px. Vérification sur différentes tailles d'écran. Ajout de pages dédiées pour chaque projet avec retour vers le portfolio.</p></div></div>
+      </div>
+    </div>
+
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-images"></i></div><h2>Captures d'écran</h2></div>
+      <div class="screenshots">
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-house"></i><p class="slot-label">Page d'accueil</p><p>Cliquez pour ajouter</p></div>
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-file-earmark-person"></i><p class="slot-label">Section CV</p><p>Cliquez pour ajouter</p></div>
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-grid-3x3-gap"></i><p class="slot-label">Section Projets</p><p>Cliquez pour ajouter</p></div>
+        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-phone"></i><p class="slot-label">Version mobile</p><p>Cliquez pour ajouter</p></div>
+      </div>
+    </div>
+
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-lightning-charge-fill"></i></div><h2>Compétences mobilisées</h2></div>
+      <div class="comp-list">
+        <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Développer la présence en ligne de l'organisation</h4><p>Participation à la valorisation de l'image personnelle sur les médias numériques, référencement du portfolio.</p></div></div>
+        <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Travailler en mode projet</h4><p>Planification des étapes de développement, respect du cahier des charges BTS SIO.</p></div></div>
+        <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Organiser son développement professionnel</h4><p>Gestion de l'identité professionnelle en ligne, mise en valeur du parcours et des compétences acquises.</p></div></div>
+      </div>
+    </div>
+
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-exclamation-triangle-fill"></i></div><h2>Difficultés rencontrées & solutions</h2></div>
+      <div class="diff-list">
+        <div class="diff-card">
+          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Navigation active incorrecte au scroll</h4></div>
+          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>L'<code style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;color:var(--accent2);font-family:monospace">IntersectionObserver</code> ne détectait pas bien les sections avec des offsets. Résolu en ajoutant un décalage de 130px dans le calcul de <code style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;color:var(--accent2);font-family:monospace">offsetTop</code> dans l'écouteur de scroll.</p></div>
+        </div>
+        <div class="diff-card">
+          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Affichage cassé sur mobile</h4></div>
+          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>La grille hero à deux colonnes débordait sur les petits écrans. Ajout d'une media query à 860px pour passer en colonne simple et réduire la taille de la photo de profil.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="fi">
+    <span>© <span id="yr"></span> Enzo Savary – BTS SIO SISR</span>
+    <a href="index.html#projets" style="color:var(--muted);font-size:.78rem;text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="bi bi-arrow-left"></i>Retour aux projets</a>
+  </div>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const ro = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target)}})},{threshold:.07});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+function loadImg(input){const s=input.closest('.ss');const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{const ex=s.querySelector('img');if(ex)ex.remove();const img=document.createElement('img');img.src=e.target.result;s.appendChild(img);s.querySelectorAll(':not(input):not(img):not(.ov)').forEach(el=>el.style.display='none')};r.readAsDataURL(f)}
+</script>
+</body>
+</html>
