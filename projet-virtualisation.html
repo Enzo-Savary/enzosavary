@@ -120,8 +120,6 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
     <div class="sec-card rev">
       <div class="sec-head"><div class="sec-ico"><i class="bi bi-images"></i></div><h2>Captures d'écran</h2></div>
       <div class="screenshots">
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-window-stack"></i><p class="slot-label">Interface VirtualBox</p><p>Cliquez pour ajouter</p></div>
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-hdd-network"></i><p class="slot-label">Configuration réseau</p><p>Cliquez pour ajouter</p></div>
         <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-camera"></i><p class="slot-label">Gestion snapshots</p><p>Cliquez pour ajouter</p></div>
         <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-display-fill"></i><p class="slot-label">VM en fonctionnement</p><p>Cliquez pour ajouter</p></div>
       </div>
@@ -135,20 +133,7 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
         <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Organiser son développement professionnel</h4><p>Mise en œuvre d'une veille sur les technologies de virtualisation (VirtualBox vs VMware vs Hyper-V).</p></div></div>
       </div>
     </div>
-
-    <div class="sec-card rev">
-      <div class="sec-head"><div class="sec-ico"><i class="bi bi-exclamation-triangle-fill"></i></div><h2>Difficultés rencontrées & solutions</h2></div>
-      <div class="diff-list">
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Les VMs ne communiquaient pas entre elles</h4></div>
-          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>Les deux VMs n'étaient pas sur le même réseau interne. Uniformisation du nom du réseau interne (<code style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;color:var(--accent2);font-family:monospace">intnet</code>) sur les deux machines dans les paramètres réseau VirtualBox.</p></div>
-        </div>
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Performances insuffisantes sur la VM Server</h4></div>
-          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>Activation de la virtualisation matérielle (VT-x/AMD-V) dans le BIOS du poste hôte et augmentation de la mémoire vidéo allouée à la VM. Installation des Guest Additions pour les drivers optimisés.</p></div>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </main>
 <footer>
