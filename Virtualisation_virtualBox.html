@@ -129,7 +129,10 @@ L’objectif était de disposer d’un environnement isolé permettant de tester
 <p>Utilisation des VM pour tester des services (Active Directory, DNS, DHCP) et s’exercer à l’administration système.</p>
 </div>
 
-      <div class="sec-card rev">
+
+      
+      
+ <div class="sec-card rev">
       <div class="sec-head">
         <div class="sec-ico"><i class="bi bi-images"></i></div>
         <h2>Captures d'écran</h2>
@@ -147,8 +150,35 @@ L’objectif était de disposer d’un environnement isolé permettant de tester
           <p class="slot-label">Configuration DNS</p>
           <img src="Capture-d-ecran-config-dns.png">
         </div>
+        <div class="screenshot-slot" onclick="triggerUpload(this)">
+          <input type="file" accept="image/*" onchange="loadImg(this)"/>
+          <div class="overlay"><i class="bi bi-pencil"></i></div>
+          <i class="bi bi-hdd-network"></i>
+          <p class="slot-label">Plage DHCP</p>
+          <p>Cliquez pour ajouter une capture</p>
         </div>
-  </div>
+        <div class="screenshot-slot" onclick="triggerUpload(this)">
+          <input type="file" accept="image/*" onchange="loadImg(this)"/>
+          <div class="overlay"><i class="bi bi-pencil"></i></div>
+          <i class="bi bi-people"></i>
+          <p class="slot-label">Utilisateurs & UO dans l'AD</p>
+          <p>Cliquez pour ajouter une capture</p>
+        </div>
+        <div class="screenshot-slot" onclick="triggerUpload(this)">
+          <input type="file" accept="image/*" onchange="loadImg(this)"/>
+          <div class="overlay"><i class="bi bi-pencil"></i></div>
+          <i class="bi bi-pc-display-horizontal"></i>
+          <p class="slot-label">Jonction poste client au domaine</p>
+          <p>Cliquez pour ajouter une capture</p>
+        </div>
+      </div>
+    </div>
+
+
+
+      
+
+      
 </div>
 
 <!-- COMPETENCES -->
