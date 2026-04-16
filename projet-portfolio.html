@@ -119,16 +119,6 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
     </div>
 
     <div class="sec-card rev">
-      <div class="sec-head"><div class="sec-ico"><i class="bi bi-images"></i></div><h2>Captures d'écran</h2></div>
-      <div class="screenshots">
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-house"></i><p class="slot-label">Page d'accueil</p><p>Cliquez pour ajouter</p></div>
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-file-earmark-person"></i><p class="slot-label">Section CV</p><p>Cliquez pour ajouter</p></div>
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-grid-3x3-gap"></i><p class="slot-label">Section Projets</p><p>Cliquez pour ajouter</p></div>
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-phone"></i><p class="slot-label">Version mobile</p><p>Cliquez pour ajouter</p></div>
-      </div>
-    </div>
-
-    <div class="sec-card rev">
       <div class="sec-head"><div class="sec-ico"><i class="bi bi-lightning-charge-fill"></i></div><h2>Compétences mobilisées</h2></div>
       <div class="comp-list">
         <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Développer la présence en ligne de l'organisation</h4><p>Participation à la valorisation de l'image personnelle sur les médias numériques, référencement du portfolio.</p></div></div>
@@ -137,19 +127,6 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
       </div>
     </div>
 
-    <div class="sec-card rev">
-      <div class="sec-head"><div class="sec-ico"><i class="bi bi-exclamation-triangle-fill"></i></div><h2>Difficultés rencontrées & solutions</h2></div>
-      <div class="diff-list">
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Navigation active incorrecte au scroll</h4></div>
-          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>L'<code style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;color:var(--accent2);font-family:monospace">IntersectionObserver</code> ne détectait pas bien les sections avec des offsets. Résolu en ajoutant un décalage de 130px dans le calcul de <code style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;color:var(--accent2);font-family:monospace">offsetTop</code> dans l'écouteur de scroll.</p></div>
-        </div>
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Affichage cassé sur mobile</h4></div>
-          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>La grille hero à deux colonnes débordait sur les petits écrans. Ajout d'une media query à 860px pour passer en colonne simple et réduire la taille de la photo de profil.</p></div>
-        </div>
-      </div>
-    </div>
   </div>
 </main>
 <footer>
