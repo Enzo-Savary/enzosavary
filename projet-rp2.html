@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="RP2 – Réalisation Professionnelle 2 – Enzo Savary, BTS SIO SISR 2025."/>
+<title>RP2 – Enzo Savary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;--border:rgba(255,255,255,.07);--accent:#6c63ff;--accent2:#ff6584;--text:#ffffff;--muted:#7a7a9a;--r:14px;--f:'Space Grotesk',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(10,10,15,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{font-weight:700;font-size:1.05rem;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-back{display:inline-flex;align-items:center;gap:.45rem;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.38rem .8rem;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s,background .2s}
+.nav-back:hover{color:var(--text);border-color:var(--accent);background:rgba(108,99,255,.08)}
+main{position:relative;z-index:1;padding:7rem 5vw 5rem;display:flex;align-items:center;min-height:100vh}
+.inner{max-width:700px;margin:0 auto;width:100%}
+.back-crumb{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.78rem;text-decoration:none;margin-bottom:1.5rem;transition:color .2s}
+.back-crumb:hover{color:var(--accent)}
+.rp-badge{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,101,132,.1);border:1px solid rgba(255,101,132,.25);color:var(--accent2);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .85rem;border-radius:100px;margin-bottom:1rem;font-weight:600}
+.proj-bar{width:42px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin-bottom:1.2rem}
+.proj-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.5rem}
+.proj-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
+.pmeta{display:inline-flex;align-items:center;gap:.4rem;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:var(--muted)}
+.pmeta i{color:var(--accent);font-size:.78rem}
+
+/* DESCRIPTION CARD */
+.desc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem 2rem;margin-bottom:1.5rem}
+.desc-card p{color:var(--text);font-size:.92rem;line-height:1.75;margin-bottom:.9rem}
+.desc-card p:last-child{margin-bottom:0}
+.desc-card strong{color:var(--text);font-weight:600}
+
+/* PDF CARD */
+.pdf-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem}
+.pdf-info{display:flex;align-items:center;gap:1.2rem}
+.pdf-ico{width:52px;height:52px;border-radius:12px;background:rgba(255,101,132,.12);border:1px solid rgba(255,101,132,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--accent2);flex-shrink:0}
+.pdf-meta h3{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
+.pdf-meta p{color:var(--muted);font-size:.8rem}
+.pdf-dl{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent2);color:#fff;padding:.72rem 1.5rem;border-radius:100px;text-decoration:none;font-weight:500;font-size:.88rem;transition:transform .2s,box-shadow .2s;box-shadow:0 0 18px rgba(255,101,132,.25);white-space:nowrap}
+.pdf-dl:hover{transform:translateY(-2px);box-shadow:0 6px 26px rgba(255,101,132,.4)}
+
+/* TAGS */
+.ptags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.5rem}
+.ptag{background:var(--card2);border:1px solid var(--border);color:var(--text);font-size:.78rem;font-weight:500;padding:.25rem .75rem;border-radius:100px}
+
+footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-index:1}
+.fi{max-width:700px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.fi span{color:var(--muted);font-size:.78rem}
+.rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+@media(max-width:600px){.pdf-card{flex-direction:column;align-items:flex-start}.fi{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">Enzo Savary</a>
+  <a class="nav-back" href="index.html#projets"><i class="bi bi-arrow-left"></i>Retour aux projets</a>
+</nav>
+<main>
+  <div class="inner">
+    <div class="rev">
+      <a class="back-crumb" href="index.html#projets"><i class="bi bi-arrow-left"></i> Projets</a>
+      <div class="rp-badge"><i class="bi bi-briefcase-fill"></i> Réalisation Professionnelle</div>
+      <div class="proj-bar"></div>
+      <h1 class="proj-title">RP2 – Support IT<br/>et ticketing</h1>
+      <div class="proj-meta">
+        <span class="pmeta"><i class="bi bi-calendar3"></i>09/09/2024 – en cours</span>
+        <span class="pmeta"><i class="bi bi-building"></i>Caiss'Mag Systèmes</span>
+        <span class="pmeta"><i class="bi bi-person"></i>Enzo Savary</span>
+      </div>
+    </div>
+
+    <div class="desc-card rev">
+      <p>Cette réalisation professionnelle porte sur le <strong>support technique de premier et second niveau</strong> assuré quotidiennement auprès des clients de Caiss'Mag Systèmes, via un système de ticketing.</p>
+      <p>La mission consiste à prendre en charge les incidents signalés par les clients (pannes matérielles, dysfonctionnements logiciels, questions d'utilisation), à les diagnostiquer à distance ou sur site, et à les résoudre dans les délais impartis.</p>
+      <p>Cette activité mobilise les compétences de <strong>réponse aux incidents</strong>, de gestion du patrimoine informatique et de développement professionnel du référentiel BTS SIO.</p>
+    </div>
+
+    <div class="pdf-card rev">
+      <div class="pdf-info">
+        <div class="pdf-ico"><i class="bi bi-file-earmark-pdf-fill"></i></div>
+        <div class="pdf-meta">
+          <h3>Fiche de réalisation professionnelle – RP2</h3>
+          <p>Document BTS SIO SISR – Session 2025</p>
+        </div>
+      </div>
+      <a class="pdf-dl" href="assets/RP2.pdf" download><i class="bi bi-download"></i>Télécharger le PDF</a>
+    </div>
+
+    <div class="ptags rev">
+      <span class="ptag">Support IT</span>
+      <span class="ptag">Ticketing</span>
+      <span class="ptag">Diagnostic</span>
+      <span class="ptag">Maintenance</span>
+      <span class="ptag">Caiss'Mag Systèmes</span>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="fi">
+    <span>© <span id="yr"></span> Enzo Savary – BTS SIO SISR</span>
+    <a href="index.html#projets" style="color:var(--muted);font-size:.78rem;text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="bi bi-arrow-left"></i>Retour aux projets</a>
+  </div>
+</footer>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const ro = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target)}})},{threshold:.07});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
