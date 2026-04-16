@@ -121,8 +121,6 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
       <div class="sec-head"><div class="sec-ico"><i class="bi bi-images"></i></div><h2>Captures d'écran</h2></div>
       <div class="screenshots">
         <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-grid-3x3-gap-fill"></i><p class="slot-label">Console GPMC</p><p>Cliquez pour ajouter</p></div>
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-shield-lock-fill"></i><p class="slot-label">GPO mots de passe</p><p>Cliquez pour ajouter</p></div>
-        <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-ban"></i><p class="slot-label">Restriction Panneau de config</p><p>Cliquez pour ajouter</p></div>
         <div class="ss" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" onchange="loadImg(this)"/><div class="ov"><i class="bi bi-pencil"></i></div><i class="big bi bi-terminal-fill"></i><p class="slot-label">gpresult /r sur le client</p><p>Cliquez pour ajouter</p></div>
       </div>
     </div>
@@ -136,19 +134,6 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
       </div>
     </div>
 
-    <div class="sec-card rev">
-      <div class="sec-head"><div class="sec-ico"><i class="bi bi-exclamation-triangle-fill"></i></div><h2>Difficultés rencontrées & solutions</h2></div>
-      <div class="diff-list">
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>La GPO ne s'appliquait pas au poste client</h4></div>
-          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>La GPO était liée au domaine mais le poste client n'avait pas encore reçu les nouvelles politiques. Exécution de <code style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;font-size:.8rem;color:var(--accent2);font-family:monospace">gpupdate /force</code> sur le client, puis redémarrage pour forcer l'application immédiate.</p></div>
-        </div>
-        <div class="diff-card">
-          <div class="diff-head"><i class="bi bi-x-circle"></i><h4>Conflit entre deux GPO sur la politique de mots de passe</h4></div>
-          <div class="diff-sol"><div class="diff-sol-lbl">✓ Solution</div><p>Deux GPO définissaient des politiques différentes. Compréhension de la priorité des GPO (la dernière appliquée l'emporte) et utilisation du bouton "Appliquer" pour forcer la priorité de la GPO souhaitée.</p></div>
-        </div>
-      </div>
-    </div>
   </div>
 </main>
 <footer>
