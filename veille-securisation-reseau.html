@@ -121,12 +121,7 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
         <span class="pmeta"><i class="bi bi-person"></i>Enzo Savary</span>
       </div>
     </div>
-
-    <!-- INTRO -->
-    <div class="intro-card rev">
-      <p>La sécurisation d'un réseau local passe par la <strong>segmentation VLAN</strong>, la mise en place d'un <strong>pare-feu</strong>, le <strong>filtrage MAC</strong> sur les switches et des politiques de mots de passe robustes via GPO. L'ANSSI recommande aussi la mise à jour régulière des équipements et la journalisation des accès.</p>
-    </div>
-
+    
     <!-- POURQUOI SÉCURISER -->
     <div class="sec-card rev">
       <div class="sec-head">
@@ -189,41 +184,6 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
           <div class="anssi-item"><i class="bi bi-chevron-right"></i>Sauvegarder les données régulièrement et tester les restaurations</div>
           <div class="anssi-item"><i class="bi bi-chevron-right"></i>Journaliser l'activité des systèmes et analyser les logs régulièrement</div>
           <div class="anssi-item"><i class="bi bi-chevron-right"></i>Sensibiliser les utilisateurs aux risques de phishing et d'ingénierie sociale</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MENACES VS SOLUTIONS -->
-    <div class="sec-card rev">
-      <div class="sec-head">
-        <div class="sec-ico"><i class="bi bi-table"></i></div>
-        <h2>Menaces et contre-mesures</h2>
-      </div>
-      <div class="threat-grid">
-        <div class="threat-row">
-          <div class="threat-cell header">Menace</div>
-          <div class="threat-cell header">Impact</div>
-          <div class="threat-cell header">Contre-mesure</div>
-        </div>
-        <div class="threat-row">
-          <div class="threat-cell bad">ARP Spoofing<span>Usurpation d'identité réseau</span></div>
-          <div class="threat-cell">Interception de trafic (MITM)</div>
-          <div class="threat-cell good">DAI (Dynamic ARP Inspection) sur les switches</div>
-        </div>
-        <div class="threat-row">
-          <div class="threat-cell bad">Brute Force<span>Attaque de mots de passe</span></div>
-          <div class="threat-cell">Compromission de comptes</div>
-          <div class="threat-cell good">GPO : verrouillage après X tentatives</div>
-        </div>
-        <div class="threat-row">
-          <div class="threat-cell bad">Équipement non autorisé<span>Connexion physique illégitime</span></div>
-          <div class="threat-cell">Intrusion sur le réseau</div>
-          <div class="threat-cell good">Filtrage MAC + 802.1X (NAC)</div>
-        </div>
-        <div class="threat-row">
-          <div class="threat-cell bad">Propagation de malware<span>Latéralisation d'une infection</span></div>
-          <div class="threat-cell">Compromission de tout le parc</div>
-          <div class="threat-cell good">Segmentation VLAN + pare-feu interne</div>
         </div>
       </div>
     </div>
