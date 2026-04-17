@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Veille technologique – Sécurisation réseau local, BTS SIO SISR – Enzo Savary 2025."/>
+<title>Veille – Sécurisation réseau – Enzo Savary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;--border:rgba(255,255,255,.07);--accent:#6c63ff;--accent2:#ff6584;--text:#ffffff;--muted:#7a7a9a;--r:14px;--f:'Space Grotesk',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(10,10,15,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{font-weight:700;font-size:1.05rem;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-back{display:inline-flex;align-items:center;gap:.45rem;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.38rem .8rem;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s,background .2s}
+.nav-back:hover{color:var(--text);border-color:var(--accent);background:rgba(108,99,255,.08)}
+
+main{position:relative;z-index:1;padding:7rem 5vw 5rem}
+.inner{max-width:860px;margin:0 auto}
+
+.back-crumb{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.78rem;text-decoration:none;margin-bottom:1.5rem;transition:color .2s}
+.back-crumb:hover{color:var(--accent)}
+
+.veille-badge{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,101,132,.1);border:1px solid rgba(255,101,132,.25);color:var(--accent2);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .85rem;border-radius:100px;margin-bottom:1rem;font-weight:600}
+.proj-bar{width:42px;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;margin-bottom:1.2rem}
+.page-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,#fff 40%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.5rem}
+.proj-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
+.pmeta{display:inline-flex;align-items:center;gap:.4rem;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:var(--muted)}
+.pmeta i{color:var(--accent2);font-size:.78rem}
+
+.intro-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-bottom:1.5rem;border-left:4px solid var(--accent2)}
+.intro-card p{font-size:1rem;line-height:1.8;color:var(--text);margin-bottom:1rem}
+.intro-card p:last-child{margin-bottom:0}
+.intro-card strong{color:var(--accent2);font-weight:600}
+
+.sec-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem 2rem;margin-bottom:1.5rem}
+.sec-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem}
+.sec-ico{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;flex-shrink:0}
+.sec-head h2{font-size:1rem;font-weight:600}
+.sec-card p{color:var(--text);font-size:.92rem;line-height:1.75;margin-bottom:1rem}
+.sec-card p:last-child{margin-bottom:0}
+.sec-card strong{color:#fff;font-weight:600}
+
+/* PRATIQUES GRID */
+.pratiques{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.pratique{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:1.3rem;display:flex;flex-direction:column;gap:.6rem;transition:border-color .25s}
+.pratique:hover{border-color:rgba(255,101,132,.3)}
+.pratique-head{display:flex;align-items:center;gap:.6rem}
+.pratique-ico{width:32px;height:32px;border-radius:8px;background:rgba(255,101,132,.12);border:1px solid rgba(255,101,132,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--accent2);flex-shrink:0}
+.pratique-head h4{font-size:.88rem;font-weight:600}
+.pratique p{color:var(--text);font-size:.82rem;line-height:1.58;margin:0}
+
+/* ANSSI BLOCK */
+.anssi-block{background:rgba(255,101,132,.06);border:1px solid rgba(255,101,132,.15);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem}
+.anssi-block h3{font-size:.9rem;font-weight:600;color:var(--accent2);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.anssi-list{display:flex;flex-direction:column;gap:.5rem}
+.anssi-item{display:flex;align-items:flex-start;gap:.65rem;font-size:.87rem;color:var(--text);line-height:1.55}
+.anssi-item i{color:var(--accent2);font-size:.85rem;flex-shrink:0;margin-top:.18rem}
+
+/* THREAT TABLE */
+.threat-grid{display:flex;flex-direction:column;gap:.7rem}
+.threat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem}
+.threat-cell{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-size:.82rem}
+.threat-cell.header{background:rgba(108,99,255,.1);border-color:rgba(108,99,255,.2);font-weight:600;color:var(--accent);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+.threat-cell.bad{border-color:rgba(255,101,132,.2)}
+.threat-cell.good{border-color:rgba(108,99,255,.2)}
+.threat-cell span{display:block;font-size:.72rem;color:var(--muted);margin-top:.2rem}
+
+/* KEY POINTS */
+.kp-list{display:flex;flex-direction:column;gap:.65rem}
+.kp{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;background:var(--card2);border:1px solid var(--border);border-radius:10px}
+.kp i{color:var(--accent2);font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.kp p{color:var(--text);font-size:.88rem;margin:0;line-height:1.6}
+.kp strong{color:#fff;font-weight:600}
+
+.source-card{background:rgba(255,101,132,.05);border:1px solid rgba(255,101,132,.15);border-radius:var(--r);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.source-card i{color:var(--accent2);font-size:1.1rem;flex-shrink:0}
+.source-card p{color:var(--muted);font-size:.85rem;margin:0}
+.source-card strong{color:var(--text)}
+
+footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-index:1}
+.fi{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.fi span{color:var(--muted);font-size:.78rem}
+.fi a{color:var(--muted);font-size:.78rem;text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s}
+.fi a:hover{color:var(--accent)}
+
+.rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+
+@media(max-width:640px){
+  .pratiques{grid-template-columns:1fr}
+  .threat-row{grid-template-columns:1fr}
+  .fi{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Enzo Savary</a>
+  <a class="nav-back" href="index.html#veille"><i class="bi bi-arrow-left"></i>Retour à la veille</a>
+</nav>
+
+<main>
+  <div class="inner">
+
+    <div class="rev">
+      <a class="back-crumb" href="index.html#veille"><i class="bi bi-arrow-left"></i> Veille technologique</a>
+      <div class="veille-badge"><i class="bi bi-shield-lock-fill"></i>Veille technologique – Cybersécurité</div>
+      <div class="proj-bar"></div>
+      <h1 class="page-title">Les bonnes pratiques de sécurisation d'un réseau local</h1>
+      <div class="proj-meta">
+        <span class="pmeta"><i class="bi bi-calendar3"></i>2025</span>
+        <span class="pmeta"><i class="bi bi-tag"></i>SISR – Cybersécurité</span>
+        <span class="pmeta"><i class="bi bi-person"></i>Enzo Savary</span>
+      </div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="intro-card rev">
+      <p>La sécurisation d'un réseau local passe par la <strong>segmentation VLAN</strong>, la mise en place d'un <strong>pare-feu</strong>, le <strong>filtrage MAC</strong> sur les switches et des politiques de mots de passe robustes via GPO. L'ANSSI recommande aussi la mise à jour régulière des équipements et la journalisation des accès.</p>
+    </div>
+
+    <!-- POURQUOI SÉCURISER -->
+    <div class="sec-card rev">
+      <div class="sec-head">
+        <div class="sec-ico"><i class="bi bi-exclamation-triangle-fill"></i></div>
+        <h2>Pourquoi sécuriser un réseau local ?</h2>
+      </div>
+      <p>Un réseau local non sécurisé est vulnérable à de nombreuses menaces : interception de données (sniffing), attaques par rebond, accès non autorisés ou propagation de malwares. Même dans un contexte interne à l'entreprise, un employé malveillant ou un équipement compromis peut mettre en danger l'ensemble du système d'information.</p>
+      <p>La sécurité réseau repose sur le principe de <strong>défense en profondeur</strong> : plusieurs couches de protection indépendantes, de sorte qu'un attaquant franchissant l'une d'elles soit bloqué par les suivantes.</p>
+    </div>
+
+    <!-- BONNES PRATIQUES -->
+    <div class="sec-card rev">
+      <div class="sec-head">
+        <div class="sec-ico"><i class="bi bi-shield-check"></i></div>
+        <h2>Les bonnes pratiques essentielles</h2>
+      </div>
+      <div class="pratiques">
+        <div class="pratique">
+          <div class="pratique-head"><div class="pratique-ico"><i class="bi bi-diagram-3"></i></div><h4>Segmentation VLAN</h4></div>
+          <p>Diviser le réseau en sous-réseaux logiques (VLAN) pour isoler les flux. Ex : VLAN Admins, VLAN Employés, VLAN Imprimantes. Un appareil compromis dans un VLAN ne peut pas accéder aux autres.</p>
+        </div>
+        <div class="pratique">
+          <div class="pratique-head"><div class="pratique-ico"><i class="bi bi-bricks"></i></div><h4>Pare-feu (Firewall)</h4></div>
+          <p>Filtrer les flux réseau entrants et sortants selon des règles définies. Un pare-feu périmétrique protège contre les menaces externes, un pare-feu interne contrôle les flux entre VLAN.</p>
+        </div>
+        <div class="pratique">
+          <div class="pratique-head"><div class="pratique-ico"><i class="bi bi-fingerprint"></i></div><h4>Filtrage MAC</h4></div>
+          <p>Sur les switches, autoriser uniquement les adresses MAC connues à se connecter aux ports réseau. Empêche les équipements non autorisés de rejoindre le réseau physiquement.</p>
+        </div>
+        <div class="pratique">
+          <div class="pratique-head"><div class="pratique-ico"><i class="bi bi-key"></i></div><h4>Politique de mots de passe (GPO)</h4></div>
+          <p>Via les GPO Active Directory, imposer une longueur minimale, une complexité obligatoire et un renouvellement régulier des mots de passe sur tous les comptes du domaine.</p>
+        </div>
+        <div class="pratique">
+          <div class="pratique-head"><div class="pratique-ico"><i class="bi bi-arrow-repeat"></i></div><h4>Mise à jour régulière</h4></div>
+          <p>Maintenir à jour le firmware des switches/routeurs, les OS des serveurs et des postes clients. Les failles non corrigées sont la première porte d'entrée des attaquants.</p>
+        </div>
+        <div class="pratique">
+          <div class="pratique-head"><div class="pratique-ico"><i class="bi bi-journal-text"></i></div><h4>Journalisation des accès</h4></div>
+          <p>Activer les logs sur les équipements réseau et les serveurs. Permet de détecter des comportements suspects, de tracer les incidents et de répondre aux obligations légales (RGPD).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMANDATIONS ANSSI -->
+    <div class="sec-card rev">
+      <div class="sec-head">
+        <div class="sec-ico"><i class="bi bi-award-fill"></i></div>
+        <h2>Recommandations de l'ANSSI</h2>
+      </div>
+      <p>L'<strong>Agence Nationale de la Sécurité des Systèmes d'Information</strong> publie un guide d'hygiène informatique listant 42 mesures prioritaires. Voici les principales applicables à un réseau local d'entreprise :</p>
+      <div class="anssi-block">
+        <h3><i class="bi bi-patch-check-fill"></i>Guide d'hygiène informatique – mesures clés</h3>
+        <div class="anssi-list">
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Connaître et maîtriser le système d'information (inventaire des équipements et logiciels)</div>
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Authentifier les utilisateurs par des mots de passe robustes et uniques</div>
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Gérer les droits d'accès selon le principe du moindre privilège</div>
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Mettre en place une politique de mise à jour systématique des logiciels et firmwares</div>
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Chiffrer les données sensibles en transit et au repos</div>
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Sauvegarder les données régulièrement et tester les restaurations</div>
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Journaliser l'activité des systèmes et analyser les logs régulièrement</div>
+          <div class="anssi-item"><i class="bi bi-chevron-right"></i>Sensibiliser les utilisateurs aux risques de phishing et d'ingénierie sociale</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENACES VS SOLUTIONS -->
+    <div class="sec-card rev">
+      <div class="sec-head">
+        <div class="sec-ico"><i class="bi bi-table"></i></div>
+        <h2>Menaces et contre-mesures</h2>
+      </div>
+      <div class="threat-grid">
+        <div class="threat-row">
+          <div class="threat-cell header">Menace</div>
+          <div class="threat-cell header">Impact</div>
+          <div class="threat-cell header">Contre-mesure</div>
+        </div>
+        <div class="threat-row">
+          <div class="threat-cell bad">ARP Spoofing<span>Usurpation d'identité réseau</span></div>
+          <div class="threat-cell">Interception de trafic (MITM)</div>
+          <div class="threat-cell good">DAI (Dynamic ARP Inspection) sur les switches</div>
+        </div>
+        <div class="threat-row">
+          <div class="threat-cell bad">Brute Force<span>Attaque de mots de passe</span></div>
+          <div class="threat-cell">Compromission de comptes</div>
+          <div class="threat-cell good">GPO : verrouillage après X tentatives</div>
+        </div>
+        <div class="threat-row">
+          <div class="threat-cell bad">Équipement non autorisé<span>Connexion physique illégitime</span></div>
+          <div class="threat-cell">Intrusion sur le réseau</div>
+          <div class="threat-cell good">Filtrage MAC + 802.1X (NAC)</div>
+        </div>
+        <div class="threat-row">
+          <div class="threat-cell bad">Propagation de malware<span>Latéralisation d'une infection</span></div>
+          <div class="threat-cell">Compromission de tout le parc</div>
+          <div class="threat-cell good">Segmentation VLAN + pare-feu interne</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POINTS CLÉS -->
+    <div class="sec-card rev">
+      <div class="sec-head">
+        <div class="sec-ico"><i class="bi bi-star-fill"></i></div>
+        <h2>Points clés à retenir</h2>
+      </div>
+      <div class="kp-list">
+        <div class="kp"><i class="bi bi-shield-fill-check"></i><p><strong>Défense en profondeur :</strong> ne jamais compter sur une seule mesure. Combiner VLAN + firewall + filtrage MAC + GPO + mises à jour.</p></div>
+        <div class="kp"><i class="bi bi-shield-fill-check"></i><p><strong>Moindre privilège :</strong> chaque utilisateur et service n'a accès qu'aux ressources strictement nécessaires à son travail.</p></div>
+        <div class="kp"><i class="bi bi-shield-fill-check"></i><p><strong>Journalisation :</strong> sans logs, il est impossible de détecter une intrusion ou de mener une investigation après incident.</p></div>
+        <div class="kp"><i class="bi bi-shield-fill-check"></i><p><strong>Mises à jour :</strong> la majorité des cyberattaques exploitent des failles déjà corrigées mais non appliquées. La veille sur les CVE est essentielle.</p></div>
+        <div class="kp"><i class="bi bi-shield-fill-check"></i><p><strong>Sensibilisation :</strong> l'humain reste le maillon faible. Un utilisateur formé aux bonnes pratiques réduit considérablement les risques de phishing.</p></div>
+      </div>
+    </div>
+
+    <!-- SOURCES -->
+    <div class="source-card rev">
+      <i class="bi bi-book-fill"></i>
+      <p><strong>Sources :</strong> ANSSI – Guide d'hygiène informatique (42 mesures), cours BTS SIO SISR – AFPI Alternance, ANSSI – anssi.gouv.fr</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="fi">
+    <span>© <span id="yr"></span> Enzo Savary – BTS SIO SISR</span>
+    <a href="index.html#veille"><i class="bi bi-arrow-left"></i>Retour à la veille</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const ro = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target)}})},{threshold:.07});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
