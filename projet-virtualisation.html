@@ -109,10 +109,10 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
     <div class="sec-card rev">
       <div class="sec-head"><div class="sec-ico"><i class="bi bi-list-check"></i></div><h2>Étapes de réalisation</h2></div>
       <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Installation et configuration de VirtualBox</h3><p>Installation de VirtualBox sur le poste hôte. Installation des Guest Additions pour améliorer les performances et activer le copier-coller entre l'hôte et les VMs.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Création de la VM Windows Server 2019</h3><p>Allocation de <code>2 Go RAM</code>, <code>2 CPU</code>, <code>50 Go disque</code>. Installation depuis l'ISO. Configuration de l'adresse IP statique <code>192.168.1.1/24</code>. Mode réseau : réseau interne <code>intnet</code>.</p></div></div>
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Installation et configuration de VMware</h3><p>Installation de VMware sur le poste hôte. Activation du copier-coller entre l'hôte et les VMs.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Création de la VM Windows Server 2019</h3><p>Allocation de <code>2 Go RAM</code>, <code>2 CPU</code>, <code>50 Go disque</code>. Installation depuis l'ISO. Configuration de l'adresse IP statique <code>192.168.56.10/24</code>. Mode réseau : réseau interne <code>intnet</code>.</p></div></div>
         <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Création de la VM Windows 10 client</h3><p>Allocation de <code>2 Go RAM</code>, <code>1 CPU</code>, <code>30 Go disque</code>. Configuration du réseau interne identique pour communiquer avec le serveur. DHCP configuré pour recevoir une IP automatiquement.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Configuration des modes réseau</h3><p>Test des différents modes réseau VirtualBox : NAT (accès internet), réseau interne (communication VM↔VM), pont (accès au réseau physique). Choix du mode réseau interne pour les TP d'infrastructure isolée.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Configuration des modes réseau</h3><p>Test des différents modes réseau : NAT (accès internet), réseau interne (communication VM↔VM), pont (accès au réseau physique). Choix du mode réseau interne pour les TP d'infrastructure isolée.</p></div></div>
         <div class="step"><div class="step-num">5</div><div class="step-body"><h3>Gestion des snapshots</h3><p>Création de snapshots avant chaque manipulation risquée. Restauration d'un snapshot après une mauvaise manipulation sur le serveur AD. Compréhension de l'arborescence des états de la machine.</p></div></div>
       </div>
     </div>
@@ -130,7 +130,7 @@ footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-i
       <div class="comp-list">
         <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Gérer le patrimoine informatique</h4><p>Mise en place de solutions de virtualisation, gestion des sauvegardes via snapshots, recensement des ressources virtuelles.</p></div></div>
         <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Mettre à disposition des utilisateurs un service informatique</h4><p>Déploiement de systèmes d'exploitation en environnement virtualisé, tests d'intégration entre les VMs.</p></div></div>
-        <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Organiser son développement professionnel</h4><p>Mise en œuvre d'une veille sur les technologies de virtualisation (VirtualBox vs VMware vs Hyper-V).</p></div></div>
+        <div class="comp-item"><i class="bi bi-check-circle-fill"></i><div><h4>Organiser son développement professionnel</h4><p>Mise en œuvre d'une veille sur les technologies de virtualisation.</p></div></div>
       </div>
     </div>
     
