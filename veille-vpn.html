@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Veille technologique – VPN et sécurité des accès distants – BTS SIO SISR – Enzo Savary 2025."/>
+<title>Veille – VPN & Accès distants – Enzo Savary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;--border:rgba(255,255,255,.07);--accent:#6c63ff;--accent2:#ff6584;--teal:#00c9a7;--text:#ffffff;--muted:#7a7a9a;--r:14px;--f:'Space Grotesk',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(10,10,15,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{font-weight:700;font-size:1.05rem;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-back{display:inline-flex;align-items:center;gap:.45rem;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.38rem .8rem;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s,background .2s}
+.nav-back:hover{color:var(--text);border-color:var(--accent);background:rgba(108,99,255,.08)}
+
+main{position:relative;z-index:1;padding:7rem 5vw 5rem}
+.inner{max-width:860px;margin:0 auto}
+
+.back-crumb{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.78rem;text-decoration:none;margin-bottom:1.5rem;transition:color .2s}
+.back-crumb:hover{color:var(--accent)}
+.veille-badge{display:inline-flex;align-items:center;gap:.45rem;background:rgba(0,201,167,.1);border:1px solid rgba(0,201,167,.25);color:var(--teal);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .85rem;border-radius:100px;margin-bottom:1rem;font-weight:600}
+.proj-bar{width:42px;height:3px;background:linear-gradient(90deg,var(--teal),var(--accent));border-radius:2px;margin-bottom:1.2rem}
+.page-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,#fff 40%,var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.5rem}
+.proj-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
+.pmeta{display:inline-flex;align-items:center;gap:.4rem;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:var(--muted)}
+.pmeta i{color:var(--teal);font-size:.78rem}
+
+.intro-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-bottom:1.5rem;border-left:4px solid var(--teal)}
+.intro-card p{font-size:1rem;line-height:1.8;color:var(--text);margin-bottom:.9rem}
+.intro-card p:last-child{margin-bottom:0}
+.intro-card strong{color:var(--teal);font-weight:600}
+
+.sec-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem 2rem;margin-bottom:1.5rem}
+.sec-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem}
+.sec-ico{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;flex-shrink:0}
+.sec-head h2{font-size:1rem;font-weight:600}
+.sec-card p{color:var(--text);font-size:.92rem;line-height:1.75;margin-bottom:1rem}
+.sec-card p:last-child{margin-bottom:0}
+.sec-card strong{color:#fff;font-weight:600}
+
+/* VPN TYPES */
+.vpn-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.vpn-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:1.3rem;transition:border-color .25s}
+.vpn-card:hover{border-color:rgba(0,201,167,.3)}
+.vpn-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem}
+.vpn-ico{width:34px;height:34px;border-radius:8px;background:rgba(0,201,167,.1);border:1px solid rgba(0,201,167,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--teal);flex-shrink:0}
+.vpn-head h4{font-size:.9rem;font-weight:600}
+.vpn-card p{color:var(--text);font-size:.83rem;line-height:1.58;margin:0}
+.vpn-card .use{display:inline-block;margin-top:.5rem;font-size:.7rem;font-weight:600;padding:.15rem .6rem;border-radius:100px;background:rgba(0,201,167,.1);color:var(--teal);border:1px solid rgba(0,201,167,.2)}
+
+/* PROTOCOLS TABLE */
+.proto-list{display:flex;flex-direction:column;gap:.7rem}
+.proto-row{display:grid;grid-template-columns:120px 1fr 80px;gap:.7rem;align-items:center}
+.proto-row.header .proto-cell{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.proto-cell{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;font-size:.83rem}
+.proto-cell.name{font-weight:600;color:var(--teal);font-size:.85rem}
+.proto-cell p{color:var(--text);font-size:.78rem;margin:.2rem 0 0;line-height:1.4}
+.badge-secu{display:inline-block;font-size:.68rem;font-weight:600;padding:.12rem .55rem;border-radius:100px}
+.s-high{background:rgba(0,201,167,.12);color:var(--teal);border:1px solid rgba(0,201,167,.2)}
+.s-med{background:rgba(245,200,66,.1);color:#f5c842;border:1px solid rgba(245,200,66,.2)}
+.s-low{background:rgba(255,101,132,.1);color:var(--accent2);border:1px solid rgba(255,101,132,.2)}
+
+/* USE CASES */
+.cases{display:flex;flex-direction:column;gap:.7rem}
+.case-row{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.1rem}
+.case-num{width:30px;height:30px;border-radius:50%;background:rgba(0,201,167,.12);border:1px solid rgba(0,201,167,.2);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--teal);flex-shrink:0}
+.case-body h4{font-size:.88rem;font-weight:600;margin-bottom:.2rem}
+.case-body p{color:var(--text);font-size:.83rem;margin:0;line-height:1.55}
+
+.kp-list{display:flex;flex-direction:column;gap:.65rem}
+.kp{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;background:var(--card2);border:1px solid var(--border);border-radius:10px}
+.kp i{color:var(--teal);font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.kp p{color:var(--text);font-size:.88rem;margin:0;line-height:1.6}
+.kp strong{color:#fff;font-weight:600}
+
+.source-card{background:rgba(0,201,167,.05);border:1px solid rgba(0,201,167,.15);border-radius:var(--r);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.source-card i{color:var(--teal);font-size:1.1rem;flex-shrink:0}
+.source-card p{color:var(--muted);font-size:.85rem;margin:0}
+.source-card strong{color:var(--text)}
+
+footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-index:1}
+.fi{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.fi span{color:var(--muted);font-size:.78rem}
+.fi a{color:var(--muted);font-size:.78rem;text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s}
+.fi a:hover{color:var(--accent)}
+
+.rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+
+@media(max-width:640px){.vpn-grid{grid-template-columns:1fr}.proto-row{grid-template-columns:1fr}.fi{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Enzo Savary</a>
+  <a class="nav-back" href="index.html#veille"><i class="bi bi-arrow-left"></i>Retour à la veille</a>
+</nav>
+
+<main>
+  <div class="inner">
+
+    <div class="rev">
+      <a class="back-crumb" href="index.html#veille"><i class="bi bi-arrow-left"></i> Veille technologique</a>
+      <div class="veille-badge"><i class="bi bi-shield-lock-fill"></i>Veille technologique – SISR</div>
+      <div class="proj-bar"></div>
+      <h1 class="page-title">VPN & accès distants :<br/>sécuriser la connexion à distance</h1>
+      <div class="proj-meta">
+        <span class="pmeta"><i class="bi bi-calendar3"></i>2025</span>
+        <span class="pmeta"><i class="bi bi-tag"></i>SISR – Réseau & Sécurité</span>
+        <span class="pmeta"><i class="bi bi-person"></i>Enzo Savary</span>
+      </div>
+    </div>
+
+    <div class="intro-card rev">
+      <p>Un <strong>VPN (Virtual Private Network)</strong> crée un tunnel chiffré entre un poste distant et le réseau de l'entreprise, permettant d'accéder aux ressources internes de façon sécurisée depuis n'importe où. Avec l'essor du télétravail, la maîtrise des solutions VPN est devenue une compétence incontournable pour tout technicien SISR.</p>
+    </div>
+
+    <!-- PRINCIPE -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-lock-fill"></i></div><h2>Principe de fonctionnement</h2></div>
+      <p>Un VPN repose sur <strong>deux mécanismes fondamentaux</strong> : le <strong>tunnel</strong> (encapsulation des paquets dans un protocole sécurisé) et le <strong>chiffrement</strong> (rendre les données illisibles pour quiconque intercepterait le trafic en transit).</p>
+      <p>Lorsqu'un utilisateur se connecte via VPN, son trafic transite par un <strong>concentrateur VPN</strong> (serveur ou équipement dédié) situé dans l'entreprise. Pour le réseau local, le poste distant apparaît comme s'il était physiquement présent dans l'entreprise avec une adresse IP interne.</p>
+    </div>
+
+    <!-- TYPES DE VPN -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-diagram-3-fill"></i></div><h2>Les types de VPN</h2></div>
+      <div class="vpn-grid">
+        <div class="vpn-card">
+          <div class="vpn-head"><div class="vpn-ico"><i class="bi bi-person-fill"></i></div><h4>VPN Client-to-Site</h4></div>
+          <p>Un utilisateur distant se connecte au réseau de l'entreprise depuis son domicile ou un lieu public. Le client VPN (logiciel) est installé sur son poste.</p>
+          <span class="use">Télétravail</span>
+        </div>
+        <div class="vpn-card">
+          <div class="vpn-head"><div class="vpn-ico"><i class="bi bi-building"></i></div><h4>VPN Site-to-Site</h4></div>
+          <p>Relie deux réseaux d'entreprise (deux agences par exemple) de façon permanente. Les routeurs ou firewalls de chaque site gèrent le tunnel automatiquement.</p>
+          <span class="use">Multi-sites</span>
+        </div>
+        <div class="vpn-card">
+          <div class="vpn-head"><div class="vpn-ico"><i class="bi bi-globe"></i></div><h4>VPN SSL / TLS</h4></div>
+          <p>Accessible depuis un navigateur web sans client dédié. Permet l'accès à des applications internes via un portail sécurisé HTTPS. Très pratique pour les accès ponctuels.</p>
+          <span class="use">Accès applicatif</span>
+        </div>
+        <div class="vpn-card">
+          <div class="vpn-head"><div class="vpn-ico"><i class="bi bi-phone-fill"></i></div><h4>VPN Always-On</h4></div>
+          <p>Le VPN se connecte automatiquement dès que le poste démarre, sans action de l'utilisateur. Garantit que tout le trafic professionnel passe toujours par le tunnel sécurisé.</p>
+          <span class="use">Flottes mobiles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROTOCOLES -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-code-slash"></i></div><h2>Les principaux protocoles VPN</h2></div>
+      <div class="proto-list">
+        <div class="proto-row header">
+          <div class="proto-cell" style="background:none;border:none">Protocole</div>
+          <div class="proto-cell" style="background:none;border:none">Description</div>
+          <div class="proto-cell" style="background:none;border:none">Sécurité</div>
+        </div>
+        <div class="proto-row">
+          <div class="proto-cell name">OpenVPN</div>
+          <div class="proto-cell"><p>Solution open source basée sur TLS/SSL. Très sécurisé, configurable, fonctionne sur TCP ou UDP. Standard de référence pour les entreprises.</p></div>
+          <div class="proto-cell"><span class="badge-secu s-high">Élevée</span></div>
+        </div>
+        <div class="proto-row">
+          <div class="proto-cell name">WireGuard</div>
+          <div class="proto-cell"><p>Protocole moderne, code source minimal (4000 lignes vs 70 000 pour OpenVPN). Très performant, chiffrement de dernière génération (ChaCha20, Curve25519).</p></div>
+          <div class="proto-cell"><span class="badge-secu s-high">Élevée</span></div>
+        </div>
+        <div class="proto-row">
+          <div class="proto-cell name">IPsec/L2TP</div>
+          <div class="proto-cell"><p>Combinaison courante dans les environnements Windows et Cisco. IPsec assure le chiffrement, L2TP crée le tunnel. Supporté nativement par Windows, macOS, iOS.</p></div>
+          <div class="proto-cell"><span class="badge-secu s-high">Élevée</span></div>
+        </div>
+        <div class="proto-row">
+          <div class="proto-cell name">PPTP</div>
+          <div class="proto-cell"><p>Ancien protocole Microsoft, facile à configurer. Chiffrement faible (MPPE 128 bits), vulnérabilités connues. À éviter en production.</p></div>
+          <div class="proto-cell"><span class="badge-secu s-low">Obsolète</span></div>
+        </div>
+        <div class="proto-row">
+          <div class="proto-cell name">SSTP</div>
+          <div class="proto-cell"><p>Protocole Microsoft basé sur HTTPS (port 443). Passe facilement les pare-feux. Bon pour les environnements Windows uniquement.</p></div>
+          <div class="proto-cell"><span class="badge-secu s-med">Moyenne</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAS D'USAGE -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-briefcase-fill"></i></div><h2>Cas d'usage en entreprise</h2></div>
+      <div class="cases">
+        <div class="case-row"><div class="case-num">1</div><div class="case-body"><h4>Télétravail sécurisé</h4><p>Les employés en remote accèdent aux serveurs de fichiers, à l'intranet, aux applications métier et à l'Active Directory exactement comme au bureau, via un client VPN installé sur leur poste.</p></div></div>
+        <div class="case-row"><div class="case-num">2</div><div class="case-num">2</div><div class="case-body"><h4>Connexion d'agences distantes</h4><p>Deux sites géographiquement éloignés sont reliés en permanence via un VPN Site-to-Site configuré sur leurs routeurs. Les utilisateurs naviguent entre les deux réseaux de façon transparente.</p></div></div>
+        <div class="case-row"><div class="case-num">3</div><div class="case-body"><h4>Accès des prestataires et techniciens</h4><p>Permettre à un prestataire externe d'accéder à un serveur spécifique pour maintenance, sans lui donner accès à tout le réseau. Un VPN avec filtrage par règles de pare-feu limite la portée de l'accès.</p></div></div>
+        <div class="case-row"><div class="case-num">4</div><div class="case-body"><h4>Administration à distance sécurisée</h4><p>Un technicien SISR peut administrer les serveurs et équipements réseau de l'entreprise depuis l'extérieur via VPN, en remplacement de l'accès RDP direct exposé sur internet.</p></div></div>
+      </div>
+    </div>
+
+    <!-- POINTS CLÉS -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-star-fill"></i></div><h2>Points clés à retenir</h2></div>
+      <div class="kp-list">
+        <div class="kp"><i class="bi bi-check-circle-fill"></i><p><strong>WireGuard et OpenVPN</strong> sont les deux protocoles recommandés aujourd'hui pour leur sécurité et leurs performances. PPTP est à proscrire.</p></div>
+        <div class="kp"><i class="bi bi-check-circle-fill"></i><p><strong>MFA obligatoire :</strong> coupler le VPN à une authentification à double facteur (SMS, application TOTP) pour éviter qu'un mot de passe compromis suffise à entrer sur le réseau.</p></div>
+        <div class="kp"><i class="bi bi-check-circle-fill"></i><p><strong>Split tunneling :</strong> configurer si seul le trafic vers le réseau d'entreprise passe par le VPN (le reste va directement sur internet), pour préserver la bande passante.</p></div>
+        <div class="kp"><i class="bi bi-check-circle-fill"></i><p><strong>Journaliser les connexions VPN :</strong> conserver les logs de connexion (qui, quand, depuis quelle IP) pour tracer les accès et détecter les comportements suspects.</p></div>
+        <div class="kp"><i class="bi bi-check-circle-fill"></i><p><strong>Zero Trust :</strong> tendance actuelle consistant à ne plus faire confiance à un utilisateur uniquement parce qu'il est connecté au VPN. Chaque accès à une ressource est vérifié individuellement.</p></div>
+      </div>
+    </div>
+
+    <div class="source-card rev">
+      <i class="bi bi-book-fill"></i>
+      <p><strong>Sources :</strong> RFC 2637 (PPTP), RFC 3193 (L2TP/IPsec), documentation WireGuard, OpenVPN Community, ANSSI – Recommandations sur le nomadisme numérique, cours BTS SIO SISR – AFPI Alternance</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="fi">
+    <span>© <span id="yr"></span> Enzo Savary – BTS SIO SISR</span>
+    <a href="index.html#veille"><i class="bi bi-arrow-left"></i>Retour à la veille</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const ro = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target)}})},{threshold:.07});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

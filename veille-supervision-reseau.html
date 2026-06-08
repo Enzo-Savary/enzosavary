@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Veille technologique – Supervision réseau, SNMP, Zabbix – BTS SIO SISR – Enzo Savary 2025."/>
+<title>Veille – Supervision réseau – Enzo Savary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--card:#13131a;--card2:#1a1a24;--border:rgba(255,255,255,.07);--accent:#6c63ff;--accent2:#ff6584;--gold:#f5c842;--text:#ffffff;--muted:#7a7a9a;--r:14px;--f:'Space Grotesk',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(10,10,15,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{font-weight:700;font-size:1.05rem;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-back{display:inline-flex;align-items:center;gap:.45rem;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;padding:.38rem .8rem;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s,background .2s}
+.nav-back:hover{color:var(--text);border-color:var(--accent);background:rgba(108,99,255,.08)}
+
+main{position:relative;z-index:1;padding:7rem 5vw 5rem}
+.inner{max-width:860px;margin:0 auto}
+
+.back-crumb{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.78rem;text-decoration:none;margin-bottom:1.5rem;transition:color .2s}
+.back-crumb:hover{color:var(--accent)}
+.veille-badge{display:inline-flex;align-items:center;gap:.45rem;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.25);color:var(--gold);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .85rem;border-radius:100px;margin-bottom:1rem;font-weight:600}
+.proj-bar{width:42px;height:3px;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:2px;margin-bottom:1.2rem}
+.page-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,#fff 40%,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.5rem}
+.proj-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
+.pmeta{display:inline-flex;align-items:center;gap:.4rem;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:var(--muted)}
+.pmeta i{color:var(--gold);font-size:.78rem}
+
+.intro-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-bottom:1.5rem;border-left:4px solid var(--gold)}
+.intro-card p{font-size:1rem;line-height:1.8;color:var(--text);margin-bottom:.9rem}
+.intro-card p:last-child{margin-bottom:0}
+.intro-card strong{color:var(--gold);font-weight:600}
+
+.sec-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem 2rem;margin-bottom:1.5rem}
+.sec-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem}
+.sec-ico{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--gold),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;flex-shrink:0}
+.sec-head h2{font-size:1rem;font-weight:600}
+.sec-card p{color:var(--text);font-size:.92rem;line-height:1.75;margin-bottom:1rem}
+.sec-card p:last-child{margin-bottom:0}
+.sec-card strong{color:#fff;font-weight:600}
+
+.def-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.def-block{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:1.2rem}
+.def-block h4{font-size:.85rem;font-weight:600;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.def-block p{color:var(--text);font-size:.83rem;line-height:1.6;margin:0}
+
+.tool-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem}
+.tool-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:1.3rem;transition:border-color .25s}
+.tool-card:hover{border-color:rgba(245,200,66,.3)}
+.tool-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem}
+.tool-ico{width:34px;height:34px;border-radius:8px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.tool-header h4{font-size:.88rem;font-weight:600}
+.tool-type{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem}
+.tool-card p{color:var(--text);font-size:.8rem;line-height:1.55;margin:0}
+.tool-tag{display:inline-block;margin-top:.5rem;font-size:.7rem;font-weight:600;padding:.15rem .6rem;border-radius:100px;background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.2)}
+
+.snmp-flow{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
+.flow-row{display:flex;align-items:stretch;gap:.5rem}
+.flow-box{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;flex:1;font-size:.83rem}
+.flow-box h4{font-size:.8rem;font-weight:600;color:var(--gold);margin-bottom:.2rem}
+.flow-box p{color:var(--text);font-size:.78rem;margin:0;line-height:1.5}
+.flow-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;padding:0 .2rem;flex-shrink:0}
+
+.kp-list{display:flex;flex-direction:column;gap:.65rem}
+.kp{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;background:var(--card2);border:1px solid var(--border);border-radius:10px}
+.kp i{color:var(--gold);font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.kp p{color:var(--text);font-size:.88rem;margin:0;line-height:1.6}
+.kp strong{color:#fff;font-weight:600}
+
+.source-card{background:rgba(245,200,66,.05);border:1px solid rgba(245,200,66,.15);border-radius:var(--r);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.source-card i{color:var(--gold);font-size:1.1rem;flex-shrink:0}
+.source-card p{color:var(--muted);font-size:.85rem;margin:0}
+.source-card strong{color:var(--text)}
+
+footer{border-top:1px solid var(--border);padding:2rem 5vw;position:relative;z-index:1}
+.fi{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.fi span{color:var(--muted);font-size:.78rem}
+.fi a{color:var(--muted);font-size:.78rem;text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s}
+.fi a:hover{color:var(--accent)}
+
+.rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+
+@media(max-width:700px){.def-grid{grid-template-columns:1fr}.tool-cards{grid-template-columns:1fr}.fi{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Enzo Savary</a>
+  <a class="nav-back" href="index.html#veille"><i class="bi bi-arrow-left"></i>Retour à la veille</a>
+</nav>
+
+<main>
+  <div class="inner">
+
+    <div class="rev">
+      <a class="back-crumb" href="index.html#veille"><i class="bi bi-arrow-left"></i> Veille technologique</a>
+      <div class="veille-badge"><i class="bi bi-activity"></i>Veille technologique – SISR</div>
+      <div class="proj-bar"></div>
+      <h1 class="page-title">La supervision réseau :<br/>surveiller, alerter, anticiper</h1>
+      <div class="proj-meta">
+        <span class="pmeta"><i class="bi bi-calendar3"></i>2025</span>
+        <span class="pmeta"><i class="bi bi-tag"></i>SISR – Infrastructure</span>
+        <span class="pmeta"><i class="bi bi-person"></i>Enzo Savary</span>
+      </div>
+    </div>
+
+    <div class="intro-card rev">
+      <p>La supervision réseau consiste à <strong>surveiller en temps réel l'état et les performances</strong> des équipements d'un système d'information : serveurs, switches, routeurs, services applicatifs. Elle permet de détecter les pannes avant qu'elles impactent les utilisateurs, d'analyser les tendances et d'anticiper les saturations.</p>
+      <p>Pour un technicien SISR, maîtriser les outils de supervision est indispensable : c'est le tableau de bord du réseau d'entreprise.</p>
+    </div>
+
+    <!-- POURQUOI -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-question-circle-fill"></i></div><h2>Pourquoi superviser son réseau ?</h2></div>
+      <p>Sans supervision, une panne matérielle, une saturation de bande passante ou un service arrêté peuvent passer inaperçus pendant des heures, voire des jours. La supervision permet de passer d'une <strong>maintenance réactive</strong> (on répare quand ça casse) à une <strong>maintenance proactive</strong> (on anticipe avant que ça casse).</p>
+      <div class="def-grid">
+        <div class="def-block"><h4><i class="bi bi-eye"></i>Disponibilité</h4><p>Savoir en temps réel si un équipement ou un service est en ligne ou hors service. Génère des alertes immédiates en cas de panne.</p></div>
+        <div class="def-block"><h4><i class="bi bi-speedometer2"></i>Performance</h4><p>Mesurer la charge CPU, la mémoire utilisée, la bande passante consommée pour détecter les goulots d'étranglement.</p></div>
+        <div class="def-block"><h4><i class="bi bi-graph-up-arrow"></i>Tendances</h4><p>Analyser l'historique des métriques pour prévoir une saturation de disque, une montée en charge ou prévoir des investissements matériels.</p></div>
+        <div class="def-block"><h4><i class="bi bi-bell"></i>Alertes</h4><p>Envoyer des notifications (email, SMS, Slack) aux administrateurs dès qu'un seuil critique est franchi, 24h/24.</p></div>
+      </div>
+    </div>
+
+    <!-- SNMP -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-broadcast"></i></div><h2>Le protocole SNMP</h2></div>
+      <p><strong>SNMP (Simple Network Management Protocol)</strong> est le protocole standard utilisé par les outils de supervision pour interroger les équipements réseau. Il fonctionne sur le port UDP 161 et utilise une architecture Agent / Manager.</p>
+      <div class="snmp-flow">
+        <div class="flow-row">
+          <div class="flow-box"><h4><i class="bi bi-pc-display" style="margin-right:.3rem"></i>Agent SNMP</h4><p>Logiciel installé sur l'équipement supervisé (switch, serveur, routeur). Collecte les données locales (MIB) et répond aux requêtes du Manager.</p></div>
+          <div class="flow-arrow"><i class="bi bi-arrow-left-right"></i></div>
+          <div class="flow-box"><h4><i class="bi bi-server" style="margin-right:.3rem"></i>Manager SNMP</h4><p>Le serveur de supervision (Zabbix, PRTG…). Envoie des requêtes GET aux agents pour récupérer les valeurs, ou reçoit des TRAP en cas d'événement.</p></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-box"><h4><i class="bi bi-table" style="margin-right:.3rem"></i>MIB (Management Information Base)</h4><p>Base de données hiérarchique décrivant les objets supervisables d'un équipement (ex : sysUpTime, ifInOctets, hrProcessorLoad). Chaque objet a un OID unique.</p></div>
+          <div class="flow-arrow"><i class="bi bi-arrow-left-right"></i></div>
+          <div class="flow-box"><h4><i class="bi bi-alarm" style="margin-right:.3rem"></i>TRAP SNMP</h4><p>Notification envoyée spontanément par l'agent au manager lors d'un événement (lien réseau coupé, CPU critique…). Permet une détection en temps réel.</p></div>
+        </div>
+      </div>
+      <p>Les versions <strong>SNMPv1 et v2c</strong> transmettent les données en clair (peu sécurisé). <strong>SNMPv3</strong> ajoute l'authentification et le chiffrement des échanges — recommandé en production.</p>
+    </div>
+
+    <!-- OUTILS -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-tools"></i></div><h2>Les principaux outils de supervision</h2></div>
+      <div class="tool-cards">
+        <div class="tool-card">
+          <div class="tool-header"><div class="tool-ico">🐝</div><h4>Zabbix</h4></div>
+          <div class="tool-type">Open source – Gratuit</div>
+          <p>Solution complète de supervision réseau et système. Supporte SNMP, ICMP, agents natifs, scripts personnalisés. Tableaux de bord configurables, alertes par email/SMS/Slack, historique des métriques.</p>
+          <span class="tool-tag">Très utilisé en entreprise</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-header"><div class="tool-ico">📡</div><h4>PRTG</h4></div>
+          <div class="tool-type">Commercial – Version gratuite limitée</div>
+          <p>Interface web intuitive, détection automatique des équipements. Idéal pour les PME. Nombreux capteurs préconfigurés pour Windows, Linux, routeurs Cisco, VMware.</p>
+          <span class="tool-tag">Facile à déployer</span>
+        </div>
+        <div class="tool-card">
+          <div class="tool-header"><div class="tool-ico">🔱</div><h4>Nagios</h4></div>
+          <div class="tool-type">Open source – Pionnier</div>
+          <p>L'outil de supervision historique. Architecture basée sur des plugins. Très flexible mais configuration plus complexe. Nagios XI propose une interface graphique moderne.</p>
+          <span class="tool-tag">Standard de référence</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÉTRIQUES CLÉS -->
+    <div class="sec-card rev">
+      <div class="sec-head"><div class="sec-ico"><i class="bi bi-bar-chart-fill"></i></div><h2>Les métriques essentielles à surveiller</h2></div>
+      <div class="kp-list">
+        <div class="kp"><i class="bi bi-cpu-fill"></i><p><strong>CPU & Mémoire RAM :</strong> une utilisation supérieure à 80% de façon prolongée indique une surcharge. Seuils d'alerte recommandés : warning à 75%, critical à 90%.</p></div>
+        <div class="kp"><i class="bi bi-hdd-fill"></i><p><strong>Espace disque :</strong> une saturation du disque peut provoquer l'arrêt complet d'un serveur. Alerter dès 80% d'occupation pour anticiper.</p></div>
+        <div class="kp"><i class="bi bi-wifi"></i><p><strong>Bande passante réseau :</strong> surveiller le trafic entrant/sortant des interfaces réseau. Détecter les pics inhabituels qui peuvent signaler une attaque ou une saturation.</p></div>
+        <div class="kp"><i class="bi bi-heart-pulse-fill"></i><p><strong>Disponibilité des services :</strong> vérifier que les services critiques (AD, DNS, DHCP, HTTP, RDP) répondent correctement. Un arrêt génère une alerte immédiate.</p></div>
+        <div class="kp"><i class="bi bi-clock-history"></i><p><strong>Latence et temps de réponse :</strong> surveiller le ping entre les équipements et le temps de réponse des applications. Une latence anormale peut indiquer un problème réseau ou de charge.</p></div>
+      </div>
+    </div>
+
+    <div class="source-card rev">
+      <i class="bi bi-book-fill"></i>
+      <p><strong>Sources :</strong> documentation officielle Zabbix, PRTG Network Monitor, RFC 1157 (SNMPv1), RFC 3411 (SNMPv3), cours BTS SIO SISR – AFPI Alternance</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="fi">
+    <span>© <span id="yr"></span> Enzo Savary – BTS SIO SISR</span>
+    <a href="index.html#veille"><i class="bi bi-arrow-left"></i>Retour à la veille</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const ro = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target)}})},{threshold:.07});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
